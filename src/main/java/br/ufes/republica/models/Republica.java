@@ -50,6 +50,10 @@ public class Republica {
         
         this.historicoRepresentantes.add(new HistoricoRepresentante(representante.getNome(), this));
     }
+    
+    public String obterNomeRepresentante() {
+        return representante.getNome();
+    }
 
     public double getVagasOcupadas() {
         return this.moradores.size();

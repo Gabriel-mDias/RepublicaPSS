@@ -13,8 +13,7 @@ public class HistoricoRepublica {
         this.mediaReputacao = mediaReputacao;
         this.pessoa = pessoa;
         this.republica = republica;
-        // TODO: Alterar quebra do princípio de Demetre
-        this.nomeRepresentante = republica.getRepresentante().getNome();
+        this.nomeRepresentante = republica.obterNomeRepresentante();
         this.nomeRepublica = republica.getNome();
     }
     
