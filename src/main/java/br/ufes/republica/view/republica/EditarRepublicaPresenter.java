@@ -31,4 +31,10 @@ public class EditarRepublicaPresenter {
         
         this.view.setVisible(true);
     }
+
+    public EditarRepublicaView getView() {
+        return view;
+    }
+    
+    
 }

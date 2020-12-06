@@ -31,6 +31,10 @@ public class EditarPerfilPresenter {
         
         this.view.setVisible(true);
     }
+
+    public EditarPerfilView getView() {
+        return view;
+    }
     
     
 }

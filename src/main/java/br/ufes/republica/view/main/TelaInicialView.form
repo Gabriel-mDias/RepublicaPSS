@@ -9,12 +9,12 @@
             <Property name="text" type="java.lang.String" value="Rep&#xfa;blica"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="itemManterRepublica">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Manter rep&#xfa;blica"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemManterRepublicaActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemManterMorador">
@@ -71,12 +71,12 @@
             <Property name="text" type="java.lang.String" value="Morador"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="itemManterperfil">
+            <MenuItem class="javax.swing.JMenuItem" name="itemManterPerfil">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Manter perfil"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemManterperfilActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemManterPerfilActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem10">
