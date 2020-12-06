@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufes.republica.views.main;
+package br.ufes.republica.view.main;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JMenu;

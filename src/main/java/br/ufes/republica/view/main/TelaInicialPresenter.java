@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufes.republica.views.main;
+package br.ufes.republica.view.main;
 
 import br.ufes.republica.view.moradores.ListaMoradoresPresenter;
 import java.awt.event.ActionEvent;
@@ -36,7 +36,7 @@ public class TelaInicialPresenter {
     
     
     public void addContainer(JInternalFrame janela){
-        view.add(janela);
+        view.getDesktop().add(janela);
     }
     
     

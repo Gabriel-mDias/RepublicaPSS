@@ -8,7 +8,7 @@ package br.ufes.republica.view.moradores;
 import java.util.List;
 import br.ufes.republica.models.Pessoa;
 import br.ufes.republica.services.MoradorService;
-import br.ufes.republica.views.main.TelaInicialView;
+import br.ufes.republica.view.main.TelaInicialView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
