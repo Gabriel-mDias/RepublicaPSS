@@ -1,6 +1,5 @@
 package br.ufes.republica.models;
 
-import br.ufes.republica.republica.state.EstadoCheia;
 import br.ufes.republica.republica.state.EstadoDisponivel;
 import br.ufes.republica.republica.state.IEstadoRepublica;
 import java.time.LocalDate;
