@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Pessoa {
 
-    private final Long id;
+    private Long id;
     private String nome;
     private String apelido;
     private String telefone;
@@ -17,7 +17,6 @@ public class Pessoa {
     private List<HistoricoRepublica> historicoRepublicas;
     private List<Rateio> rateios;
     private Republica republicaAtual;
-
     private IEstadoPessoa estado;
 
     public Pessoa(Long id, String nome, String apelido, String telefone, String CPF, String linkRedeSocial, String telefoneResponsavel1, String telefoneResponsavel2, List<HistoricoRepublica> historicoRepublicas, IEstadoPessoa estado) {

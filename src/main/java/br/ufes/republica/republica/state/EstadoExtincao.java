@@ -21,5 +21,10 @@ public class EstadoExtincao implements IEstadoRepublica{
     public void extinguirRepublica(Republica republica) {
         throw new RuntimeException("ERRO: República já extinta");
     }
+
+    @Override
+    public String toString() {
+        return "EstadoExtincao";
+    }
     
 }

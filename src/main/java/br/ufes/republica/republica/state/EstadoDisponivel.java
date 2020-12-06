@@ -24,5 +24,10 @@ public class EstadoDisponivel implements IEstadoRepublica{
     public void extinguirRepublica(Republica republica) {
         republica.setEstado(new EstadoExtincao()); //TODO: Limpar a lista de moradores
     }
+
+    @Override
+    public String toString() {
+        return "EstadoDisponivel";
+    }
     
 }

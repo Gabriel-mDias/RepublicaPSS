@@ -8,10 +8,12 @@ public class HistoricoRepresentante {
     private String nomeRepresentante;
     private LocalDate dataInicioMandato;
     private LocalDate dataFimMandato;
+    private Republica republica;
 
-    public HistoricoRepresentante(String nomeRepresentante) {
+    public HistoricoRepresentante(String nomeRepresentante, Republica republica) {
         this.nomeRepresentante = nomeRepresentante;
         this.dataInicioMandato = LocalDate.now();
+        this.republica = republica;
     }
 
     public String getNomeRepresentante() {
