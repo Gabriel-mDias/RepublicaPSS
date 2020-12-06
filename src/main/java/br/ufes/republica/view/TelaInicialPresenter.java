@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufes.republica.view.main;
+package br.ufes.republica.view;
 
 import br.ufes.republica.view.moradores.ListaMoradoresPresenter;
+import br.ufes.republica.view.tarefas.ConclusaoTarefasPresenter;
+import br.ufes.republica.view.tarefas.ListaTarefasPresenter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JInternalFrame;
@@ -29,6 +31,19 @@ public class TelaInicialPresenter {
             }
         });
         
+        this.view.getItemTarefa().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ListaTarefasPresenter(view.getDesktop());
+            }
+        });
+        
+        this.view.getItemConclusaoTarefa().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ConclusaoTarefasPresenter(view.getDesktop());
+            }
+        });
         
         
         this.view.setVisible(true);
