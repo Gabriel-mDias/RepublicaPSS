@@ -9,9 +9,9 @@ import br.ufes.republica.models.Pessoa;
 import br.ufes.republica.models.Republica;
 import br.ufes.republica.view.moradores.ListaMoradoresPresenter;
 import br.ufes.republica.view.perfil.VisualizarPerfilPresenter;
-import br.ufes.republica.view.perfil.VisualizarPerfilView;
 import br.ufes.republica.view.republica.VisualizarRepublicaPresenter;
-import br.ufes.republica.view.republica.VisualizarRepublicaView;
+import br.ufes.republica.view.tarefa.ListarFeedbackPresenter;
+import br.ufes.republica.view.tarefa.ListarFeedbackView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JInternalFrame;
@@ -50,6 +50,14 @@ public class TelaInicialPresenter {
             public void actionPerformed(ActionEvent e) {
                 Republica republica = null;
                 addContainer(new VisualizarRepublicaPresenter(republica, view.getDesktop()).getView());
+            }
+        });
+        
+        this.view.getItemManterReclamacao().addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Republica republica = null;
+                addContainer(new ListarFeedbackPresenter(republica, view.getDesktop()).getView());
             }
         });
         

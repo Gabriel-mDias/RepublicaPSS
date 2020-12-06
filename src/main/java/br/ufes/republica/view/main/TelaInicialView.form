@@ -59,7 +59,7 @@
                 <Property name="text" type="java.lang.String" value="Consultar resultado mensal"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
+            <MenuItem class="javax.swing.JMenuItem" name="itemManterReclamacao">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Manter reclama&#xe7;&#xf5;es / sugest&#xf5;es"/>
               </Properties>
