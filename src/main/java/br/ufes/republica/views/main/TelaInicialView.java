@@ -5,20 +5,21 @@
  */
 package br.ufes.republica.views.main;
 
-import br.ufes.republica.view.moradores.ListaMoradoresPresenter;
-import br.ufes.republica.view.moradores.ListaMoradoresView;
+import javax.swing.JDesktopPane;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 
 /**
  *
  * @author bruno
  */
-public class TelaInicial extends javax.swing.JFrame {
+public class TelaInicialView extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaInicial
      */
-    public TelaInicial() {
+    public TelaInicialView() {
         initComponents();
     }
 
@@ -33,9 +34,9 @@ public class TelaInicial extends javax.swing.JFrame {
 
         Desktop = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        btnManterMoradores = new javax.swing.JMenu();
+        menuRepublica = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        itemManterMorador = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -57,7 +58,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnManterMoradores.setText("República");
+        menuRepublica.setText("República");
 
         jMenuItem1.setText("Manter república");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -65,15 +66,15 @@ public class TelaInicial extends javax.swing.JFrame {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        btnManterMoradores.add(jMenuItem1);
+        menuRepublica.add(jMenuItem1);
 
-        jMenuItem2.setText("Manter moradores");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        itemManterMorador.setText("Manter moradores");
+        itemManterMorador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                itemManterMoradorActionPerformed(evt);
             }
         });
-        btnManterMoradores.add(jMenuItem2);
+        menuRepublica.add(itemManterMorador);
 
         jMenuItem3.setText("Confirmar solução de reclamações / sugestões");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +82,7 @@ public class TelaInicial extends javax.swing.JFrame {
                 jMenuItem3ActionPerformed(evt);
             }
         });
-        btnManterMoradores.add(jMenuItem3);
+        menuRepublica.add(jMenuItem3);
 
         jMenuItem4.setText("Convidar moradores/ Aceitar convite");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +90,7 @@ public class TelaInicial extends javax.swing.JFrame {
                 jMenuItem4ActionPerformed(evt);
             }
         });
-        btnManterMoradores.add(jMenuItem4);
+        menuRepublica.add(jMenuItem4);
 
         jMenuItem5.setText("Criar república");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -97,18 +98,18 @@ public class TelaInicial extends javax.swing.JFrame {
                 jMenuItem5ActionPerformed(evt);
             }
         });
-        btnManterMoradores.add(jMenuItem5);
+        menuRepublica.add(jMenuItem5);
 
         jMenuItem6.setText("Buscar vagas");
-        btnManterMoradores.add(jMenuItem6);
+        menuRepublica.add(jMenuItem6);
 
         jMenuItem7.setText("Consultar resultado mensal");
-        btnManterMoradores.add(jMenuItem7);
+        menuRepublica.add(jMenuItem7);
 
         jMenuItem8.setText("Manter reclamações / sugestões");
-        btnManterMoradores.add(jMenuItem8);
+        menuRepublica.add(jMenuItem8);
 
-        jMenuBar1.add(btnManterMoradores);
+        jMenuBar1.add(menuRepublica);
 
         jMenu2.setText("Morador");
 
@@ -211,10 +212,9 @@ public class TelaInicial extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        ListaMoradoresPresenter l = new ListaMoradoresPresenter();
-        
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void itemManterMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemManterMoradorActionPerformed
+    
+    }//GEN-LAST:event_itemManterMoradorActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         
@@ -240,40 +240,38 @@ public class TelaInicial extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
-    /**
-     */
-    public static void main(String[] args) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new TelaInicial().setVisible(true);
-        });
+    public JDesktopPane getDesktop() {
+        return Desktop;
     }
 
+    public JMenuItem getItemManterMorador() {
+        return itemManterMorador;
+    }
+
+    public void setItemManterMorador(JMenuItem itemManterMorador) {
+        this.itemManterMorador = itemManterMorador;
+    }
+
+
+    public JMenu getMenuRepublica() {
+        return menuRepublica;
+    }
+
+    public void setMenuRepublica(JMenu menuRepublica) {
+        this.menuRepublica = menuRepublica;
+    }
+
+    
+    
+    public static void setDesktop(JDesktopPane Desktop) {
+        TelaInicialView.Desktop = Desktop;
+    }
+
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane Desktop;
-    private javax.swing.JMenu btnManterMoradores;
+    private javax.swing.JMenuItem itemManterMorador;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
@@ -287,7 +285,6 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
@@ -295,5 +292,6 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenu menuRepublica;
     // End of variables declaration//GEN-END:variables
 }
