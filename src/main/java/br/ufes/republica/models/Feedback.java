@@ -83,9 +83,4 @@ public class Feedback {
         return autor;
     }
 
-    public List<Pessoa> getMoradores() {
-        return moradores;
-    }
-
-    
 }

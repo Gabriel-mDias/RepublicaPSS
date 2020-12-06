@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufes.republica.view.main;
+package br.ufes.republica.view.tarefas;
 
 /**
  *
- * @author gabriel
+ * @author bruno
  */
-public class Principal {
-    public static void main(String[] args) {
-        new TelaInicialPresenter();
-    }
+public class CadastroTarefasPresenter {
+    
 }
