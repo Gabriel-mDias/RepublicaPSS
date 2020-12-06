@@ -2,8 +2,6 @@ package br.ufes.republica.models;
 
 import br.ufes.republica.enums.Periodicidade;
 import br.ufes.republica.enums.TipoLancamento;
-import br.ufes.republica.models.Pessoa;
-import br.ufes.republica.models.Rateio;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +15,9 @@ public class Lancamento {
     private Periodicidade periodicidade;
     private double valor;
     private boolean aprovado;
-    private List<Pessoa> moradores;
     private List<Rateio> rateios;
 
-    public Lancamento(Long id, String descricao, TipoLancamento tipoLancamento, LocalDate dataVencimento, Periodicidade periodicidade, double valor, boolean aprovado, List<Pessoa> moradores) {
+    public Lancamento(Long id, String descricao, TipoLancamento tipoLancamento, LocalDate dataVencimento, Periodicidade periodicidade, double valor, boolean aprovado) {
         this.id = id;
         this.descricao = descricao;
         this.tipoLancamento = tipoLancamento;
@@ -28,7 +25,6 @@ public class Lancamento {
         this.periodicidade = periodicidade;
         this.valor = valor;
         this.aprovado = aprovado;
-        this.moradores = moradores;
         this.rateios = new ArrayList<>();
     }
 
@@ -89,14 +85,6 @@ public class Lancamento {
 
     public void setAprovado(boolean aprovado) {
         this.aprovado = aprovado;
-    }
-
-    public List<Pessoa> getMoradores() {
-        return moradores;
-    }
-
-    public void setMoradores(List<Pessoa> moradores) {
-        this.moradores = moradores;
     }
 
     public List<Rateio> getRateios() {
