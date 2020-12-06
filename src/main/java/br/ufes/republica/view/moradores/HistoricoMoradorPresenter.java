@@ -5,10 +5,24 @@
  */
 package br.ufes.republica.view.moradores;
 
+import br.ufes.republica.models.Pessoa;
+
 /**
  *
  * @author gabriel
  */
 public class HistoricoMoradorPresenter {
+    
+    private Pessoa pessoa;
+    private HistoricoMoradorView view;
+
+    public HistoricoMoradorPresenter(Pessoa pessoa) {
+        this.pessoa = pessoa;
+        this.view = new HistoricoMoradorView();
+        
+        this.view.setVisible(true);
+    }
+    
+    
     
 }

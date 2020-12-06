@@ -43,8 +43,8 @@ public class TelaInicialView extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        menuMorador = new javax.swing.JMenu();
+        itemManterperfil = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
@@ -111,15 +111,15 @@ public class TelaInicialView extends javax.swing.JFrame {
 
         jMenuBar1.add(menuRepublica);
 
-        jMenu2.setText("Morador");
+        menuMorador.setText("Morador");
 
-        jMenuItem9.setText("Manter perfil");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+        itemManterperfil.setText("Manter perfil");
+        itemManterperfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
+                itemManterperfilActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem9);
+        menuMorador.add(itemManterperfil);
 
         jMenuItem10.setText("Aceitar convite");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
@@ -127,9 +127,9 @@ public class TelaInicialView extends javax.swing.JFrame {
                 jMenuItem10ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem10);
+        menuMorador.add(jMenuItem10);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(menuMorador);
 
         jMenu3.setText("Tarefas");
 
@@ -232,9 +232,9 @@ public class TelaInicialView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+    private void itemManterperfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemManterperfilActionPerformed
         
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
+    }//GEN-LAST:event_itemManterperfilActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         
@@ -261,10 +261,8 @@ public class TelaInicialView extends javax.swing.JFrame {
         this.menuRepublica = menuRepublica;
     }
 
-    
-    
-    public static void setDesktop(JDesktopPane Desktop) {
-        TelaInicialView.Desktop = Desktop;
+    public JMenuItem getItemManterperfil() {
+        return itemManterperfil;
     }
 
     
@@ -272,7 +270,7 @@ public class TelaInicialView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane Desktop;
     private javax.swing.JMenuItem itemManterMorador;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem itemManterperfil;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
@@ -291,7 +289,7 @@ public class TelaInicialView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenu menuMorador;
     private javax.swing.JMenu menuRepublica;
     // End of variables declaration//GEN-END:variables
 }

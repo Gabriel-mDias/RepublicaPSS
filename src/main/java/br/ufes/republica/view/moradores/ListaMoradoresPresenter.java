@@ -8,7 +8,6 @@ package br.ufes.republica.view.moradores;
 import java.util.List;
 import br.ufes.republica.models.Pessoa;
 import br.ufes.republica.services.MoradorService;
-import br.ufes.republica.view.main.TelaInicialView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -50,14 +49,13 @@ public class ListaMoradoresPresenter {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Pessoa morador = null;  //Receber aquele selecionado da tabela
-                new EditarMoradoresPresenter(morador);
+                new HistoricoMoradorPresenter(morador);
             }
         
         });
         
         
         view.setVisible(true);
-        //TelaInicialView.Desktop.add(view);
     }
 
     public ListaMoradoresView getView() {
