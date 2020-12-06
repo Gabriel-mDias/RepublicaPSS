@@ -9,7 +9,7 @@ public class EstadoSemTeto implements IEstadoPessoa {
     @Override
     public void entrarRepublica(Pessoa pessoa, Republica republica) {
         pessoa.setRepublicaAtual(republica);
-        pessoa.getHistoricoRepublicas().add(new HistoricoRepublica(0, republica)); //TODO: Media de Reputação
+        pessoa.getHistoricoRepublicas().add(new HistoricoRepublica(0, pessoa, republica)); //TODO: Media de Reputação
     }
 
     @Override

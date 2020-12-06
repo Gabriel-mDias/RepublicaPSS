@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Pessoa {
 
-    private final Long id;
+    private Long id;
     private String nome;
     private String apelido;
     private String telefone;

@@ -49,7 +49,7 @@ public class Republica {
             this.historicoRepresentantes.get(this.historicoRepresentantes.size()-1).setDataFimMandato(LocalDate.now());
         }
         
-        this.historicoRepresentantes.add(new HistoricoRepresentante(representante.getNome()));
+        this.historicoRepresentantes.add(new HistoricoRepresentante(representante.getNome(), this));
     }
 
     public double getVagasOcupadas() {
