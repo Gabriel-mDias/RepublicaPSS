@@ -22,6 +22,10 @@ public class HistoricoMoradorPresenter {
         
         this.view.setVisible(true);
     }
+
+    public HistoricoMoradorView getView() {
+        return view;
+    }
     
     
     
