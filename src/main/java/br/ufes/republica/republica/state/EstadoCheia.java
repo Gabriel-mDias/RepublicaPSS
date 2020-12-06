@@ -24,5 +24,10 @@ public class EstadoCheia implements IEstadoRepublica{
     public void extinguirRepublica(Republica republica) {
         republica.setEstado(new EstadoExtincao());
     }
+
+    @Override
+    public String toString() {
+        return "EstadoCheia";
+    }
     
 }

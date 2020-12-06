@@ -89,8 +89,6 @@ public class ListaMoradoresView extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnConvidar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConvidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvidarActionPerformed

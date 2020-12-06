@@ -32,7 +32,10 @@ public class EditarMoradoresPresenter {
             }
         });
     }
-    
+
+    public EditarMoradoresView getView() {
+        return view;
+    }
     
     
 }

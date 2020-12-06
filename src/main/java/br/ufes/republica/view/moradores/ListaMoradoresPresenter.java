@@ -7,10 +7,12 @@ package br.ufes.republica.view.moradores;
 
 import java.util.List;
 import br.ufes.republica.models.Pessoa;
+import br.ufes.republica.models.Republica;
 import br.ufes.republica.services.MoradorService;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
 
@@ -18,11 +20,13 @@ public class ListaMoradoresPresenter {
     
     private ListaMoradoresView view;
     private List<Pessoa> moradores;
+    private Republica republica;
     private MoradorService moradorService;
 
-    public ListaMoradoresPresenter() {
-        moradores = new ArrayList<>();
-        view = new ListaMoradoresView();
+    public ListaMoradoresPresenter(Republica republica, JDesktopPane container) {
+        this.moradores = new ArrayList<>();
+        this.view = new ListaMoradoresView();
+        this.republica = republica;
         
         
             //Ações dos botões
@@ -30,7 +34,7 @@ public class ListaMoradoresPresenter {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Pessoa morador = null;  //Receber aquele selecionado da tabela
-                new EditarMoradoresPresenter(morador);
+                container.add(new EditarMoradoresPresenter(morador).getView());
             }
         
         });
@@ -49,14 +53,13 @@ public class ListaMoradoresPresenter {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Pessoa morador = null;  //Receber aquele selecionado da tabela
-                new EditarMoradoresPresenter(morador);
+                container.add(new HistoricoMoradorPresenter(morador).getView() );
             }
         
         });
         
         
         view.setVisible(true);
-        //TelaInicialView.Desktop.add(view);
     }
 
     public ListaMoradoresView getView() {

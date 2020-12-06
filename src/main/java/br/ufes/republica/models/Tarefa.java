@@ -10,15 +10,15 @@ public class Tarefa {
     private String descricao;
     private LocalDate dataTermino;
     private boolean finalizada;
-    private List<Pessoa> moradores;
+    private List<TarefaMorador> tarefasMoradores;
 
-    public Tarefa(Long id, LocalDate dataAgendamento, String descricao, LocalDate dataTermino, boolean finalizada, List<Pessoa> moradores) {
+    public Tarefa(Long id, LocalDate dataAgendamento, String descricao, LocalDate dataTermino, boolean finalizada, List<TarefaMorador> tarefasMoradores) {
         this.id = id;
         this.dataAgendamento = dataAgendamento;
         this.descricao = descricao;
         this.dataTermino = dataTermino;
         this.finalizada = finalizada;
-        this.moradores = moradores;
+        this.tarefasMoradores = tarefasMoradores;
     }
 
     public Tarefa() {
@@ -64,12 +64,12 @@ public class Tarefa {
         this.finalizada = finalizada;
     }
 
-    public List<Pessoa> getMoradores() {
-        return moradores;
+    public List<TarefaMorador> getTarefasMoradores() {
+        return tarefasMoradores;
     }
 
-    public void setMoradores(List<Pessoa> moradores) {
-        this.moradores = moradores;
+    public void setTarefasMoradores(List<TarefaMorador> tarefasMoradores) {
+        this.tarefasMoradores = tarefasMoradores;
     }
 
 }

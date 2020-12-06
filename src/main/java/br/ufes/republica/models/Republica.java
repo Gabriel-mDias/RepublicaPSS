@@ -1,6 +1,5 @@
 package br.ufes.republica.models;
 
-import br.ufes.republica.republica.state.EstadoCheia;
 import br.ufes.republica.republica.state.EstadoDisponivel;
 import br.ufes.republica.republica.state.IEstadoRepublica;
 import java.time.LocalDate;
@@ -49,7 +48,11 @@ public class Republica {
             this.historicoRepresentantes.get(this.historicoRepresentantes.size()-1).setDataFimMandato(LocalDate.now());
         }
         
-        this.historicoRepresentantes.add(new HistoricoRepresentante(representante.getNome()));
+        this.historicoRepresentantes.add(new HistoricoRepresentante(representante.getNome(), this));
+    }
+    
+    public String obterNomeRepresentante() {
+        return representante.getNome();
     }
 
     public double getVagasOcupadas() {

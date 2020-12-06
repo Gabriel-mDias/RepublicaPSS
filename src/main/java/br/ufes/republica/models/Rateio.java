@@ -4,14 +4,24 @@ package br.ufes.republica.models;
 
 public class Rateio {
     
+    private Long id;
+    private double Valor;
+    private boolean pago;
     private Pessoa pessoa;
     private Lancamento lancamento;
-    private double Valor;
 
     public Rateio(Pessoa pessoa, Lancamento lancamento, double Valor) {
         this.pessoa = pessoa;
         this.lancamento = lancamento;
         this.Valor = Valor;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Pessoa getPessoa() {
