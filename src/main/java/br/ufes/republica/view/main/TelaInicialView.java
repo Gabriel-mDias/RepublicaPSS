@@ -42,7 +42,7 @@ public class TelaInicialView extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        itemManterReclamacao = new javax.swing.JMenuItem();
         menuMorador = new javax.swing.JMenu();
         itemManterPerfil = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -106,8 +106,8 @@ public class TelaInicialView extends javax.swing.JFrame {
         jMenuItem7.setText("Consultar resultado mensal");
         menuRepublica.add(jMenuItem7);
 
-        jMenuItem8.setText("Manter reclamações / sugestões");
-        menuRepublica.add(jMenuItem8);
+        itemManterReclamacao.setText("Manter reclamações / sugestões");
+        menuRepublica.add(itemManterReclamacao);
 
         jMenuBar1.add(menuRepublica);
 
@@ -259,12 +259,21 @@ public class TelaInicialView extends javax.swing.JFrame {
     public JMenuItem getItemManterRepublica() {
         return itemManterRepublica;
     }
+
+    public JMenuItem getItemManterReclamacao() {
+        return itemManterReclamacao;
+    }
+
+
+    
+    
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane Desktop;
     private javax.swing.JMenuItem itemManterMorador;
     private javax.swing.JMenuItem itemManterPerfil;
+    private javax.swing.JMenuItem itemManterReclamacao;
     private javax.swing.JMenuItem itemManterRepublica;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
@@ -282,7 +291,6 @@ public class TelaInicialView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenu menuMorador;
     private javax.swing.JMenu menuRepublica;
     // End of variables declaration//GEN-END:variables

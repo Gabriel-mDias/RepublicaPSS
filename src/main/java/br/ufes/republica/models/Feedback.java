@@ -1,9 +1,8 @@
 package br.ufes.republica.models;
 
-import enumeracoes.TipoFeedback;
+import br.ufes.republica.enums.TipoFeedback;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class Feedback {
@@ -58,4 +57,33 @@ public class Feedback {
         this.autor = null;  //Anônimo
     }
 
+    public TipoFeedback getTipo() {
+        return tipo;
+    }
+
+    public LocalDate getDataRealizado() {
+        return dataRealizado;
+    }
+
+    public LocalDate getDataSolucionado() {
+        return dataSolucionado;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public boolean isExcluido() {
+        return excluido;
+    }
+
+    public Pessoa getAutor() {
+        return autor;
+    }
+
+    public List<Pessoa> getMoradores() {
+        return moradores;
+    }
+
+    
 }
