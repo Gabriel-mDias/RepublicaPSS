@@ -59,4 +59,28 @@ public class Feedback {
         this.autor = null;  //Anônimo
     }
 
+    public TipoFeedback getTipo() {
+        return tipo;
+    }
+
+    public LocalDate getDataRealizado() {
+        return dataRealizado;
+    }
+
+    public LocalDate getDataSolucionado() {
+        return dataSolucionado;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public boolean isExcluido() {
+        return excluido;
+    }
+
+    public Pessoa getAutor() {
+        return autor;
+    }
+
 }
