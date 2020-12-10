@@ -14,8 +14,10 @@ public class SqliteManager {
     
     public Connection conectar() {
         try {
-            String url = "jdbc:sqlite:src/main/java/br/ufes/republica/dao/db/republica";
-            conn = DriverManager.getConnection(url);
+            if (conn == null || conn.isClosed()) {
+                String url = "jdbc:sqlite:src/main/java/br/ufes/republica/dao/db/republica";
+                conn = DriverManager.getConnection(url);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(SqliteManager.class.getName()).log(Level.SEVERE, null, ex);
         }
