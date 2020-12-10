@@ -25,12 +25,17 @@
             <scope>test</scope>
         </dependency>
         <!-- Thanks for using https://jar-download.com -->
-    <dependency>
+        <dependency>
             <groupId>org.netbeans.external</groupId>
             <artifactId>AbsoluteLayout</artifactId>
             <version>RELEASE113</version>
-    </dependency>
-    <!-- Thanks for using https://jar-download.com -->
+        </dependency>
+        <!-- Thanks for using https://jar-download.com -->
+        <dependency>
+            <groupId>jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.0.13</version>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
