@@ -19,6 +19,9 @@ public class Pessoa {
     private Republica republicaAtual;
     private IEstadoPessoa estado;
 
+    public Pessoa() {
+    }
+    
     public Pessoa(Long id, String nome, String apelido, String telefone, String CPF, String linkRedeSocial, String telefoneResponsavel1, String telefoneResponsavel2, List<HistoricoRepublica> historicoRepublicas, IEstadoPessoa estado) {
         this.id = id;
         this.nome = nome;
@@ -31,6 +34,14 @@ public class Pessoa {
         this.historicoRepublicas = historicoRepublicas;
         this.estado = estado;
         this.rateios = new ArrayList<>();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {

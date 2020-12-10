@@ -6,7 +6,7 @@
 package br.ufes.republica.view.moradores;
 
 import br.ufes.republica.models.Pessoa;
-import br.ufes.republica.services.MoradorService;
+import br.ufes.republica.services.PessoaService;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 public class EditarMoradoresPresenter {
     
     private Pessoa morador;
-    private MoradorService moradorService;
+    private PessoaService moradorService;
     private EditarMoradoresView view;
 
     public EditarMoradoresPresenter(Pessoa morador) {

@@ -5,30 +5,27 @@
  */
 package br.ufes.republica.view;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 /**
  *
  * @author bruno
  */
 public class LoginPresenter {
+
     private LoginView view;
 
     public LoginPresenter() {
         this.view = new LoginView();
         
-        this.view.getBtnLogin().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new TelaInicialPresenter();
-                view.setVisible(false);
-                view.dispose();
-            }
-        });       
-        
+        this.view.getBtnLogin().addActionListener((e) -> {
+            new TelaInicialPresenter();
+            view.setVisible(false);
+            view.dispose();
+        });
+
+        this.view.getBtnCadastrar().addActionListener((e) -> {
+        });
+
         this.view.setVisible(true);
     }
-    
-    
+
 }

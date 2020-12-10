@@ -10,7 +10,7 @@ import br.ufes.republica.models.Republica;
 import br.ufes.republica.view.moradores.ListaMoradoresPresenter;
 import br.ufes.republica.view.tarefas.ConclusaoTarefasPresenter;
 import br.ufes.republica.view.tarefas.ListaTarefasPresenter;
-import br.ufes.republica.view.perfil.VisualizarPerfilPresenter;
+import br.ufes.republica.view.perfil.presenter.ManterPerfilPresenter;
 import br.ufes.republica.view.republica.VisualizarRepublicaPresenter;
 import br.ufes.republica.view.tarefa.ListarFeedbackPresenter;
 import br.ufes.republica.view.tarefa.ListarFeedbackView;
@@ -52,11 +52,11 @@ public class TelaInicialPresenter {
             }
         });
         
-         this.view.getItemManterPerfil().addActionListener( new ActionListener() {
+         this.view.getItemManterPerfil().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Pessoa pessoa = null;
-                addContainer(new VisualizarPerfilPresenter(pessoa, view.getDesktop()).getView());
+                addContainer(new ManterPerfilPresenter(pessoa, view.getDesktop()).getView());
             }
          });
 
