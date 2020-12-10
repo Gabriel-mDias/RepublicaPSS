@@ -75,8 +75,8 @@ public class RepublicaDAOSQLite implements IRepublicaDAO {
             ps.setLong(6, republica.getEndereco().getId());
             ps.setLong(7, republica.getNumeroTotalVagas());
             ps.setString(8, republica.getEstado().toString());
-            ps.setString(9, republica.getEstado().toString());
-            ps.setDouble(10, republica.getDespesaMediaMorador());
+            ps.setDouble(9, republica.getDespesaMediaMorador());
+            ps.setDouble(10, republica.getId());
             ps.executeUpdate();
 
             this.manager.fechaTransacao();
@@ -301,6 +301,7 @@ public class RepublicaDAOSQLite implements IRepublicaDAO {
                 republica.setEndereco(endereco);
                 
                 republicasDisponiveis.add(republica);
+                republica = new Republica();
             }
             
             this.manager.fechaTransacao();
