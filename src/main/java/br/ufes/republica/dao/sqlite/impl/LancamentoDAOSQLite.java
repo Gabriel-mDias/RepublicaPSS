@@ -27,7 +27,7 @@ public class LancamentoDAOSQLite implements ILancamentoDAO {
     public void insert(Lancamento lancamento, Long idRepublica) throws Exception {    //TODO: Foreign Key com Republica?
         try {
             String SQL = "INSERT INTO Lancamento(descricao, tipoLancamento, dataVencimento, periodicidade, valor, aprovado"+
-                                        " id_republica = ? ) VALUES(?, ?, ?, ?, ?, ?, ?);";
+                                        " id_republica ) VALUES(?, ?, ?, ?, ?, ?, ?);";
             
             Connection conn = this.manager.conectar();
             this.manager.abreTransacao();
