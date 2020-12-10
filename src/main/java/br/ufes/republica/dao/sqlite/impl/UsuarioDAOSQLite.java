@@ -59,7 +59,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
         } catch (Exception ex) {
             this.manager.desfazTransacao();
             this.manager.close();
-            throw new Exception("Erro ao inserir");
+            throw new Exception("Erro ao atualizar");
         }
     }
     
@@ -90,7 +90,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
         } catch (Exception ex) {
             this.manager.desfazTransacao();
             this.manager.close();
-            throw new Exception("Erro ao inserir");
+            throw new Exception("Erro ao buscar");
         }
     }
 
@@ -121,7 +121,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
         } catch (Exception ex) {
             this.manager.desfazTransacao();
             this.manager.close();
-            throw new Exception("Erro ao inserir");
+            throw new Exception("Erro ao buscar");
         }
     }
 
@@ -153,7 +153,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
         } catch (Exception ex) {
             this.manager.desfazTransacao();
             this.manager.close();
-            throw new Exception("Erro ao inserir");
+            throw new Exception("Erro ao buscar");
         }
     }
 
@@ -175,7 +175,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
         } catch (Exception ex) {
             this.manager.desfazTransacao();
             this.manager.close();
-            throw new Exception("Erro ao inserir");
+            throw new Exception("Erro ao deletar");
         }
     }
     
@@ -197,7 +197,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO {
         } catch (Exception ex) {
             this.manager.desfazTransacao();
             this.manager.close();
-            throw new Exception("Erro ao inserir");
+            throw new Exception("Erro ao buscar");
         }
     }
 
