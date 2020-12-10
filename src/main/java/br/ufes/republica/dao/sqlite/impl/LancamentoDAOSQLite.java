@@ -5,7 +5,6 @@ import br.ufes.republica.dao.manager.SqliteManager;
 import br.ufes.republica.enums.Periodicidade;
 import br.ufes.republica.enums.TipoLancamento;
 import br.ufes.republica.models.Lancamento;
-import br.ufes.republica.models.Republica;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;

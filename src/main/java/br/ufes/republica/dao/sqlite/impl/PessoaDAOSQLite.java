@@ -49,7 +49,33 @@ public class PessoaDAOSQLite implements IPessoaDAO {
 
     @Override
     public void update(Pessoa p) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            String SQL = "UPDATE Pessoa SET nome= ?, apelido= ?, telefone= ?, cpf= ?, linkRedesSociais= ?, telefoneResponsavel1= ?, telefoneResponsavel2= ?, estado = ? "+
+                    " WHERE id = ?;";
+            
+            Connection conn = this.manager.conectar();
+            this.manager.abreTransacao();
+            
+            PreparedStatement ps = conn.prepareStatement(SQL);
+            ps.setString(1,p.getNome());
+            ps.setString(2, p.getApelido());
+            ps.setString(3, p.getTelefone());
+            ps.setString(4, p.getCPF());
+            ps.setString(5, p.getLinkRedeSocial());
+            ps.setString(6, p.getTelefoneResponsavel1());
+            ps.setString(7, p.getTelefoneResponsavel2());
+            ps.setString(8, p.getEstado().toString());
+            ps.setLong(9, p.getId());
+            ps.executeUpdate();
+
+            this.manager.fechaTransacao();
+            this.manager.close();
+            
+        } catch (Exception ex) {
+            this.manager.desfazTransacao();
+            this.manager.close();
+            throw new Exception("Erro ao atualizar");
+        }  
     }
 
     @Override
