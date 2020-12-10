@@ -6,7 +6,7 @@ import br.ufes.republica.pessoa.state.IEstadoPessoa;
 public class EstadoSemTetoFactory extends EstadoPessoaFactory {
     
     public EstadoSemTetoFactory() {
-        this.estadoFabricado = "EstadoRepresentante";
+        this.estadoFabricado = "EstadoSemTeto";
     }
 
     @Override
