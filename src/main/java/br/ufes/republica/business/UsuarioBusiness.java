@@ -13,6 +13,17 @@ public class UsuarioBusiness {
         this.usuarioDAO = UsuarioDAOCollection.getInstancia().cria(System.getProperty("db.name"));
     }
     
+    public Usuario getById(Long id) throws Exception {
+        if(id == null) {
+            throw new BusinessException("ID não informado");
+        }
+        var usuario = usuarioDAO.getById(id);
+        if(usuario == null || usuario.getId() == null) {
+            throw new BusinessException("Usuário não encontrado");
+        }
+        return usuario;
+    }
+    
     public void insert(Usuario usuario, Long idPessoa) throws Exception {
         if (usuario == null) {
             throw new BusinessException("Usuário fornecido é inválido");
@@ -35,6 +46,10 @@ public class UsuarioBusiness {
             throw new BusinessException("ID da pessoa fornecida é inválido");
         }
         
+        if(usuarioDAO.loginExists(usuario.getLogin())) {
+            throw new BusinessException("Já existe um usuário com este login");
+        }
+        
         usuarioDAO.insert(usuario, idPessoa);
     }
     
@@ -54,12 +69,14 @@ public class UsuarioBusiness {
         usuarioDAO.update(usuario);
     }
     
-    public Usuario getByLogin(String login) throws Exception {
+    public Usuario getByLogin(String login, String senha) throws Exception {
         if (login == null || login.isBlank()) {
-            throw new BusinessException("Login fornecido é inválido");
+            throw new BusinessException("Login não informado");
         }
-        
-        return usuarioDAO.getByLogin(login);
+        if (senha == null || senha.isBlank()) {
+            throw new BusinessException("Senha não informada");
+        }
+        return usuarioDAO.getByLogin(login, senha);
     }
     
     public Usuario getByIdPessoa(Long idPessoa) throws Exception {
@@ -84,6 +101,5 @@ public class UsuarioBusiness {
         }
         
         return usuarioDAO.loginExists(login);
-    }
-    
+    }    
 }

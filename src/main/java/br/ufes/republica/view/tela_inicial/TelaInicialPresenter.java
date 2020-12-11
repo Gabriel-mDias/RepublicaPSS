@@ -5,7 +5,7 @@
  */
 package br.ufes.republica.view.tela_inicial;
 
-import br.ufes.republica.models.Pessoa;
+import br.ufes.republica.exception.BusinessException;
 import br.ufes.republica.models.Republica;
 import br.ufes.republica.models.Usuario;
 import br.ufes.republica.view.moradores.ListaMoradoresPresenter;
@@ -14,8 +14,10 @@ import br.ufes.republica.view.tarefas.ListaTarefasPresenter;
 import br.ufes.republica.view.perfil.presenter.ManterPerfilPresenter;
 import br.ufes.republica.view.republica.VisualizarRepublicaPresenter;
 import br.ufes.republica.view.tarefa.ListarFeedbackPresenter;
+import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
 /**
@@ -26,8 +28,19 @@ public class TelaInicialPresenter {
     
     private TelaInicialView view;
 
-    public TelaInicialPresenter() {
+    public TelaInicialPresenter(Usuario usuarioLogado) throws BusinessException {
+        var telaInicial = this;
         this.view = new TelaInicialView();
+        if(usuarioLogado == null || usuarioLogado.getId() == null) {
+            this.view.setVisible(false);
+            this.view.dispose();
+            throw new BusinessException("Login Inválido");
+        }
+        System.setProperty("idUsuarioLogado", usuarioLogado.getId().toString());
+        
+        this.view.setState(JFrame.ICONIFIED);
+        this.view.setLocationRelativeTo(this.view.getParent());
+        this.view.setExtendedState(MAXIMIZED_BOTH);
         
         this.view.getItemManterMorador().addActionListener( new ActionListener() {
             @Override
@@ -55,8 +68,7 @@ public class TelaInicialPresenter {
          this.view.getItemManterPerfil().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Usuario usuario = getUsuarioTeste();
-                new ManterPerfilPresenter(view.getDesktop(), usuario);
+                new ManterPerfilPresenter(telaInicial, view.getDesktop(), usuarioLogado);
             }
          });
 
@@ -85,22 +97,9 @@ public class TelaInicialPresenter {
         view.getDesktop().add(janela);
     }
     
-    private Usuario getUsuarioTeste() {
-        var usuario = new Usuario();
-        usuario.setId(1L);
-        usuario.setLogin("Bruno");
-        usuario.setSenha("Bruno");
-        var pessoa = new Pessoa();
-        pessoa.setId(1L);
-        pessoa.setNome("Bruno");
-        pessoa.setApelido("Brunin");
-        pessoa.setTelefone("28999004644");
-        pessoa.setCPF("11111111111");
-        pessoa.setLinkRedeSocial("@asdf");
-        pessoa.setTelefoneResponsavel1("28999564397");
-        pessoa.setTelefoneResponsavel2("28999556683");
-        usuario.setPessoa(pessoa);
-        return usuario;
+    public void sair() {
+        view.setVisible(false);
+        view.dispose();
     }
     
     

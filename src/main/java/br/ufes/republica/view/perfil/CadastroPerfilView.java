@@ -75,9 +75,9 @@ public class CadastroPerfilView extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        lblApelido.setText("Apelido:");
+        lblApelido.setText("Apelido: *");
 
-        lblCpf.setText("CPF:");
+        lblCpf.setText("CPF: *");
 
         try {
             txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -90,11 +90,11 @@ public class CadastroPerfilView extends javax.swing.JFrame {
         pnUsuario.setBorder(javax.swing.BorderFactory.createTitledBorder("Usuário"));
         pnUsuario.setToolTipText("Usuário");
 
-        lblLogin.setText("Login:");
+        lblLogin.setText("Login: *");
 
-        lblSenha.setText("Senha:");
+        lblSenha.setText("Senha: *");
 
-        lblSenhaNovamente.setText("Digite a senha novamente:");
+        lblSenhaNovamente.setText("Digite a senha novamente: *");
 
         javax.swing.GroupLayout pnUsuarioLayout = new javax.swing.GroupLayout(pnUsuario);
         pnUsuario.setLayout(pnUsuarioLayout);
@@ -131,13 +131,13 @@ public class CadastroPerfilView extends javax.swing.JFrame {
                 .addGap(0, 13, Short.MAX_VALUE))
         );
 
-        lblTelefone.setText("Telefone:");
+        lblTelefone.setText("Telefone: *");
 
         lblTelefoneResponsavel1.setText("Telefone do Responsável 1:");
 
         lblTelefoneResponsavel2.setText("Telefone do Responsável 2:");
 
-        lblNome.setText("Nome:");
+        lblNome.setText("Nome: *");
 
         try {
             txtTelefoneResponsavel2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
@@ -164,13 +164,6 @@ public class CadastroPerfilView extends javax.swing.JFrame {
                     .addComponent(txtRedeSocial)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNome)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblTelefone)
-                                .addGap(115, 115, 115)
-                                .addComponent(lblCpf))
-                            .addComponent(lblApelido)
-                            .addComponent(lblRedeSocial)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtTelefoneResponsavel1, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
@@ -178,7 +171,16 @@ public class CadastroPerfilView extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblTelefoneResponsavel2)
-                                    .addComponent(txtTelefoneResponsavel2, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE))))
+                                    .addComponent(txtTelefoneResponsavel2, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNome)
+                                    .addComponent(lblTelefone)
+                                    .addComponent(lblApelido)
+                                    .addComponent(lblRedeSocial))
+                                .addGap(67, 67, 67)
+                                .addComponent(lblCpf)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(3, 3, 3))
                     .addComponent(pnUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())

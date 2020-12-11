@@ -12,22 +12,29 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class PessoaDAOSQLite implements IPessoaDAO {
 
     private SqliteManager manager;
-    
+
+    public PessoaDAOSQLite(SqliteManager manager) {
+        if (manager == null) {
+            throw new RuntimeException("Manager fornecido é inválido");
+        }
+
+        this.manager = manager;
+    }
+
     @Override
-    public void insert(Pessoa p) throws Exception {
+    public Pessoa insert(Pessoa p) throws Exception {
         try {
-            String SQL = "INSERT INTO Pessoa(nome, apelido, telefone, cpf, linkRedesSociais, telefoneResponsavel1, telefoneResponsavel2, estado) " + 
-                                        "VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
-            
+            String SQL = "INSERT INTO Pessoa(nome, apelido, telefone, cpf, linkRedeSocial, telefoneResponsavel1, telefoneResponsavel2, estado, excluido) "
+                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, 0);";
+
             Connection conn = this.manager.conectar();
             this.manager.abreTransacao();
-            
+
             PreparedStatement ps = conn.prepareStatement(SQL);
-            ps.setString(1,p.getNome());
+            ps.setString(1, p.getNome());
             ps.setString(2, p.getApelido());
             ps.setString(3, p.getTelefone());
             ps.setString(4, p.getCPF());
@@ -36,28 +43,57 @@ public class PessoaDAOSQLite implements IPessoaDAO {
             ps.setString(7, p.getTelefoneResponsavel2());
             ps.setString(8, p.getEstado().toString());
             ps.executeUpdate();
+            
+            Pessoa pessoa = this.getByMaxId(conn);
 
             this.manager.fechaTransacao();
             this.manager.close();
             
+            return pessoa;
+
         } catch (Exception ex) {
             this.manager.desfazTransacao();
             this.manager.close();
+            System.out.println(ex.getMessage());
             throw new Exception("Erro ao inserir");
         }
     }
 
+    private Pessoa getByMaxId(Connection conn) throws Exception {
+        String SQL = "SELECT p.id, p.nome, p.apelido, p.telefone, p.cpf, p.linkRedeSocial, p.telefoneResponsavel1, p.telefoneResponsavel2, p.estado, p.id_republica "
+                + " FROM Pessoa p "
+                + " WHERE p.id = "
+                + "          ( SELECT MAX(p2.id) FROM Pessoa p2 );";
+
+        PreparedStatement ps = conn.prepareStatement(SQL);
+        ResultSet rs = ps.executeQuery();
+        
+        Pessoa pessoa = new Pessoa();
+        while (rs.next()) {
+            pessoa.setId(rs.getLong(1));
+            pessoa.setNome(rs.getString(2));
+            pessoa.setApelido(rs.getString(3));
+            pessoa.setTelefone(rs.getString(4));
+            pessoa.setCPF(rs.getString(5));
+            pessoa.setLinkRedeSocial(rs.getString(6));
+            pessoa.setTelefoneResponsavel1(rs.getString(7));
+            pessoa.setTelefoneResponsavel2(rs.getString(8));
+            pessoa.setEstado(EstadoPessoaCollection.getInstancia().cria(rs.getString(9)));
+        }
+        return pessoa;
+    }
+
     @Override
     public void update(Pessoa p) throws Exception {
-        try{
-            String SQL = "UPDATE Pessoa SET nome= ?, apelido= ?, telefone= ?, cpf= ?, linkRedesSociais= ?, telefoneResponsavel1= ?, telefoneResponsavel2= ?, estado = ? "+
-                    " WHERE id = ?;";
-            
+        try {
+            String SQL = "UPDATE Pessoa SET nome= ?, apelido= ?, telefone= ?, cpf= ?, linkRedeSocial= ?, telefoneResponsavel1= ?, telefoneResponsavel2= ?, estado = ? "
+                    + " WHERE id = ?;";
+
             Connection conn = this.manager.conectar();
             this.manager.abreTransacao();
-            
+
             PreparedStatement ps = conn.prepareStatement(SQL);
-            ps.setString(1,p.getNome());
+            ps.setString(1, p.getNome());
             ps.setString(2, p.getApelido());
             ps.setString(3, p.getTelefone());
             ps.setString(4, p.getCPF());
@@ -70,32 +106,32 @@ public class PessoaDAOSQLite implements IPessoaDAO {
 
             this.manager.fechaTransacao();
             this.manager.close();
-            
+
         } catch (Exception ex) {
             this.manager.desfazTransacao();
             this.manager.close();
             throw new Exception("Erro ao atualizar");
-        }  
+        }
     }
 
     @Override
     public Pessoa getById(Long id) throws Exception {
-        try{
-            String SQL = "SELECT p.id, p.nome, p.apelido, p.telefone, p.cpf, p.linkRedeSocial, p.telefoneResponsavel1, p.telefoneResponsavel2, p.estado, p.id_republica "+
-                    " r.nome, r.vantagens, r.estatuto, r.dataFundacao, r.dataExtincao, r.numTotalVagas, r.estado, r.despesaMediaMorador "+
-                    " FROM Pessoa p LEFT JOIN Republica r ON p.id_republica = r.id " + 
-                    " WHERE p.id = ?;";
-            
+        try {
+            String SQL = "SELECT p.id, p.nome, p.apelido, p.telefone, p.cpf, p.linkRedeSocial, p.telefoneResponsavel1, p.telefoneResponsavel2, p.estado, p.id_republica "
+                    + " r.nome, r.vantagens, r.estatuto, r.dataFundacao, r.dataExtincao, r.numTotalVagas, r.estado, r.despesaMediaMorador "
+                    + " FROM Pessoa p LEFT JOIN Republica r ON p.id_republica = r.id "
+                    + " WHERE p.id = ?;";
+
             Connection conn = this.manager.conectar();
             this.manager.abreTransacao();
-            
+
             PreparedStatement ps = conn.prepareStatement(SQL);
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
-            
+
             Pessoa morador = new Pessoa();
             Republica republica = new Republica();
-            while(rs.next()){
+            while (rs.next()) {
                 morador.setId(rs.getLong(1));
                 morador.setNome(rs.getString(2));
                 morador.setApelido(rs.getString(3));
@@ -105,7 +141,7 @@ public class PessoaDAOSQLite implements IPessoaDAO {
                 morador.setTelefoneResponsavel1(rs.getString(7));
                 morador.setTelefoneResponsavel2(rs.getString(8));
                 morador.setEstado(EstadoPessoaCollection.getInstancia().cria(rs.getString(9)));
-                
+
                 republica.setId(rs.getLong(10));
                 republica.setVantagens(rs.getString(11));
                 republica.setEstatuto(rs.getString(12));
@@ -114,40 +150,40 @@ public class PessoaDAOSQLite implements IPessoaDAO {
                 republica.setNumeroTotalVagas(rs.getInt(15));
                 republica.setEstado(EstadoRepublicaCollection.getInstancia().cria(rs.getString(16)));
                 republica.setDespesaMediaMorador(rs.getDouble(17));
-                
+
                 morador.setRepublicaAtual(republica);
             }
-            
+
             this.manager.fechaTransacao();
             this.manager.close();
-            
+
             return morador;
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             this.manager.desfazTransacao();
             this.manager.close();
             throw new Exception("Erro ao buscar");
         }
     }
-    
+
     @Override
     public List<Pessoa> getByIdRepublica(Long idRepublica) throws Exception {
         List<Pessoa> moradores = new ArrayList<>();
-        
-        try{
-            String SQL = "SELECT m.id, m.nome, m.apelido, m.telefone, m.cpf, m.linkRedeSocial, m.telefoneResponsavel1, m.telefoneResponsavel2, m.estado "+
-                    " FROM Pessoa m INNER JOIN Republica r ON r.id = p.id_republica" + 
-                    " WHERE r.id = ?;";
-            
+
+        try {
+            String SQL = "SELECT m.id, m.nome, m.apelido, m.telefone, m.cpf, m.linkRedeSocial, m.telefoneResponsavel1, m.telefoneResponsavel2, m.estado "
+                    + " FROM Pessoa m INNER JOIN Republica r ON r.id = p.id_republica"
+                    + " WHERE r.id = ?;";
+
             Connection conn = this.manager.conectar();
             this.manager.abreTransacao();
-            
+
             PreparedStatement ps = conn.prepareStatement(SQL);
             ps.setLong(1, idRepublica);
             ResultSet rs = ps.executeQuery();
-            
+
             Pessoa morador = new Pessoa();
-            while(rs.next()){
+            while (rs.next()) {
                 morador.setId(rs.getLong(1));
                 morador.setNome(rs.getString(2));
                 morador.setApelido(rs.getString(3));
@@ -157,17 +193,17 @@ public class PessoaDAOSQLite implements IPessoaDAO {
                 morador.setTelefoneResponsavel1(rs.getString(7));
                 morador.setTelefoneResponsavel2(rs.getString(8));
                 morador.setEstado(EstadoPessoaCollection.getInstancia().cria(rs.getString(9)));
-                
+
                 moradores.add(morador);
                 //morador = new Pessoa();
             }
-            
+
             this.manager.fechaTransacao();
             this.manager.close();
-            
+
             return moradores;
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             this.manager.desfazTransacao();
             this.manager.close();
             throw new Exception("Erro ao buscar");
@@ -176,13 +212,13 @@ public class PessoaDAOSQLite implements IPessoaDAO {
 
     @Override
     public void updateRepublica(Pessoa p) throws Exception {
-        try{
-            String SQL = "UPDATE Pessoa SET id_republica = ? "+
-                    " WHERE id = ?;";
-            
+        try {
+            String SQL = "UPDATE Pessoa SET id_republica = ? "
+                    + " WHERE id = ?;";
+
             Connection conn = this.manager.conectar();
             this.manager.abreTransacao();
-            
+
             PreparedStatement ps = conn.prepareStatement(SQL);
             ps.setLong(1, p.getRepublicaAtual().getId());
             ps.setLong(2, p.getId());
@@ -190,11 +226,33 @@ public class PessoaDAOSQLite implements IPessoaDAO {
 
             this.manager.fechaTransacao();
             this.manager.close();
-            
+
         } catch (Exception ex) {
             this.manager.desfazTransacao();
             this.manager.close();
             throw new Exception("Erro ao atualizar");
-        }    
+        }
+    }
+    
+    @Override
+    public void delete(Long id) throws Exception {
+        try {
+            String SQL = "UPDATE Pessoa SET excluido = ? WHERE id = ?;";
+            
+            Connection conn = this.manager.conectar();
+            this.manager.abreTransacao();
+            
+            PreparedStatement ps = conn.prepareStatement(SQL);
+            ps.setLong(1, 1);
+            ps.setLong(2, id);
+            ps.executeUpdate();
+            
+            this.manager.fechaTransacao();
+            this.manager.close();
+        } catch (Exception ex) {
+            this.manager.desfazTransacao();
+            this.manager.close();
+            throw new Exception("Erro ao deletar");
+        }
     }
 }
