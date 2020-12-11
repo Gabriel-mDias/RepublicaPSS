@@ -1,5 +1,6 @@
 package br.ufes.republica.business;
 
+import br.ufes.republica.dao.collection.UsuarioDAOCollection;
 import br.ufes.republica.dao.interfaces.IUsuarioDAO;
 import br.ufes.republica.exception.BusinessException;
 import br.ufes.republica.models.Usuario;
@@ -8,12 +9,8 @@ public class UsuarioBusiness {
     
     private IUsuarioDAO usuarioDAO;
     
-    public UsuarioBusiness(IUsuarioDAO usuarioDAO) {
-        if (usuarioDAO == null) {
-            throw new RuntimeException("DAO fornecida é inválida");
-        }
-        
-        this.usuarioDAO = usuarioDAO;
+    public UsuarioBusiness() {
+        this.usuarioDAO = UsuarioDAOCollection.getInstancia().cria(System.getProperty("db.name"));
     }
     
     public void insert(Usuario usuario, Long idPessoa) throws Exception {

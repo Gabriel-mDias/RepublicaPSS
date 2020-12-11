@@ -19,7 +19,7 @@ public class SqliteManager {
                 conn = DriverManager.getConnection(url);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(SqliteManager.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         
         return conn;
