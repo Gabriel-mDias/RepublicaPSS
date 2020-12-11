@@ -4,4 +4,6 @@ import br.ufes.republica.dao.interfaces.IRepublicaDAO;
 
 public class RepublicaDAOSQLite implements IRepublicaDAO {
     
+    
+    
 }
