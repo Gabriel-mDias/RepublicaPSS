@@ -7,8 +7,8 @@ package br.ufes.republica.services;
 
 /**
  *
- * @author gabriel
+ * @author bruno
  */
-public class MoradorService {
+public class PessoaService {
     
 }

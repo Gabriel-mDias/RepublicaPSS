@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufes.republica.view;
+package br.ufes.republica.view.tela_inicial;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JMenu;
@@ -280,11 +280,10 @@ public class TelaInicialView extends javax.swing.JFrame {
     public static javax.swing.JDesktopPane Desktop;
     private javax.swing.JMenuItem itemConclusaoTarefa;
     private javax.swing.JMenuItem itemManterMorador;
-    private javax.swing.JMenuItem itemTarefa;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem itemManterPerfil;
     private javax.swing.JMenuItem itemManterReclamacao;
     private javax.swing.JMenuItem itemManterRepublica;
+    private javax.swing.JMenuItem itemTarefa;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;

@@ -8,7 +8,7 @@ package br.ufes.republica.view.moradores;
 import java.util.List;
 import br.ufes.republica.models.Pessoa;
 import br.ufes.republica.models.Republica;
-import br.ufes.republica.services.MoradorService;
+import br.ufes.republica.services.PessoaService;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class ListaMoradoresPresenter {
     private ListaMoradoresView view;
     private List<Pessoa> moradores;
     private Republica republica;
-    private MoradorService moradorService;
+    private PessoaService moradorService;
 
     public ListaMoradoresPresenter(Republica republica, JDesktopPane container) {
         this.moradores = new ArrayList<>();

@@ -9,6 +9,7 @@ public class Usuario {
     private boolean excluido;
     
     public Usuario() {
+        this.pessoa = new Pessoa();
     }
 
     public Usuario(Long id, String login, String senha, Pessoa pessoa) {

@@ -5,6 +5,8 @@
  */
 package br.ufes.republica.view;
 
+import br.ufes.republica.view.login.LoginPresenter;
+
 /**
  *
  * @author gabriel
