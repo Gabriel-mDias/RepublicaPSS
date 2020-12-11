@@ -11,7 +11,7 @@ public class Principal {
         
         Principal app = new Principal();
         Properties prop = app.loadPropertiesFile("config.properties");
-        System.setProperties(prop);
+        System.setProperty("db.name", prop.getProperty("db.name"));
         
 //        new LoginPresenter();
 
