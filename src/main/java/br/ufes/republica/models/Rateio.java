@@ -16,6 +16,10 @@ public class Rateio {
         this.Valor = Valor;
     }
 
+    public Rateio() {
+    }
+    
+
     public Long getId() {
         return id;
     }
@@ -46,6 +50,14 @@ public class Rateio {
 
     public void setValor(double Valor) {
         this.Valor = Valor;
+    }
+
+    public boolean isPago() {
+        return pago;
+    }
+
+    public void setPago(boolean pago) {
+        this.pago = pago;
     }
     
     

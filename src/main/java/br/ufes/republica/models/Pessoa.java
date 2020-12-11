@@ -33,6 +33,9 @@ public class Pessoa {
         this.rateios = new ArrayList<>();
     }
 
+    public Pessoa() {
+    }
+
     public String getNome() {
         return nome;
     }
@@ -119,6 +122,14 @@ public class Pessoa {
 
     public void setRepublicaAtual(Republica republicaAtual) {
         this.republicaAtual = republicaAtual;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     
