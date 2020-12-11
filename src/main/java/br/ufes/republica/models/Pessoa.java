@@ -130,15 +130,5 @@ public class Pessoa {
 
     public void setRepublicaAtual(Republica republicaAtual) {
         this.republicaAtual = republicaAtual;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    
+    }    
 }
