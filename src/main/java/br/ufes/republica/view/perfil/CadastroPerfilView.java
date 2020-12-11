@@ -16,12 +16,12 @@ import javax.swing.JTextField;
  *
  * @author bruno
  */
-public class ManterPerfilView extends javax.swing.JInternalFrame {
+public class CadastroPerfilView extends javax.swing.JFrame {
 
     /**
-     * Creates new form CadNovaTarefa
+     * Creates new form CadastroPerfilView
      */
-    public ManterPerfilView() {
+    public CadastroPerfilView() {
         initComponents();
     }
 
@@ -34,23 +34,15 @@ public class ManterPerfilView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblNome = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
-        txtApelido = new javax.swing.JTextField();
-        lblApelido = new javax.swing.JLabel();
-        txtRedeSocial = new javax.swing.JTextField();
-        lblRedeSocial = new javax.swing.JLabel();
-        lblTelefone = new javax.swing.JLabel();
-        lblTelefoneResponsavel1 = new javax.swing.JLabel();
-        lblTelefoneResponsavel2 = new javax.swing.JLabel();
-        btnHistorico = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
-        txtTelefoneResponsavel2 = new javax.swing.JFormattedTextField();
         txtTelefone = new javax.swing.JFormattedTextField();
+        txtApelido = new javax.swing.JTextField();
         txtTelefoneResponsavel1 = new javax.swing.JFormattedTextField();
+        lblApelido = new javax.swing.JLabel();
         lblCpf = new javax.swing.JLabel();
+        txtRedeSocial = new javax.swing.JTextField();
         txtCpf = new javax.swing.JFormattedTextField();
+        lblRedeSocial = new javax.swing.JLabel();
         pnUsuario = new javax.swing.JPanel();
         lblLogin = new javax.swing.JLabel();
         txtLogin = new javax.swing.JTextField();
@@ -58,33 +50,18 @@ public class ManterPerfilView extends javax.swing.JInternalFrame {
         lblSenhaNovamente = new javax.swing.JLabel();
         txtSenha = new javax.swing.JPasswordField();
         txtSenhaNovamente = new javax.swing.JPasswordField();
+        lblTelefone = new javax.swing.JLabel();
+        lblTelefoneResponsavel1 = new javax.swing.JLabel();
+        lblTelefoneResponsavel2 = new javax.swing.JLabel();
+        lblNome = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
+        txtTelefoneResponsavel2 = new javax.swing.JFormattedTextField();
 
-        setClosable(true);
-        setTitle("Perfil");
-
-        lblNome.setText("Nome:");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Usuário");
+        setResizable(false);
 
         btnSalvar.setText("Salvar");
-
-        lblApelido.setText("Apelido:");
-
-        lblRedeSocial.setText("Link da Rede Social:");
-
-        lblTelefone.setText("Telefone:");
-
-        lblTelefoneResponsavel1.setText("Telefone do Responsável 1:");
-
-        lblTelefoneResponsavel2.setText("Telefone do Responsável 2:");
-
-        btnHistorico.setText("Ver Histórico de Repúblicas");
-
-        btnExcluir.setText("Excluir Conta");
-
-        try {
-            txtTelefoneResponsavel2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
 
         try {
             txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
@@ -98,6 +75,8 @@ public class ManterPerfilView extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
 
+        lblApelido.setText("Apelido:");
+
         lblCpf.setText("CPF:");
 
         try {
@@ -105,6 +84,8 @@ public class ManterPerfilView extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+
+        lblRedeSocial.setText("Link da Rede Social:");
 
         pnUsuario.setBorder(javax.swing.BorderFactory.createTitledBorder("Usuário"));
         pnUsuario.setToolTipText("Usuário");
@@ -150,6 +131,20 @@ public class ManterPerfilView extends javax.swing.JInternalFrame {
                 .addGap(0, 13, Short.MAX_VALUE))
         );
 
+        lblTelefone.setText("Telefone:");
+
+        lblTelefoneResponsavel1.setText("Telefone do Responsável 1:");
+
+        lblTelefoneResponsavel2.setText("Telefone do Responsável 2:");
+
+        lblNome.setText("Nome:");
+
+        try {
+            txtTelefoneResponsavel2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,11 +159,8 @@ public class ManterPerfilView extends javax.swing.JInternalFrame {
                     .addComponent(txtApelido, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtNome)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnHistorico)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtRedeSocial)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,12 +173,12 @@ public class ManterPerfilView extends javax.swing.JInternalFrame {
                             .addComponent(lblRedeSocial)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtTelefoneResponsavel1, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                                    .addComponent(txtTelefoneResponsavel1, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
                                     .addComponent(lblTelefoneResponsavel1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblTelefoneResponsavel2)
-                                    .addComponent(txtTelefoneResponsavel2, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE))))
+                                    .addComponent(txtTelefoneResponsavel2, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE))))
                         .addGap(3, 3, 3))
                     .addComponent(pnUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -224,31 +216,29 @@ public class ManterPerfilView extends javax.swing.JInternalFrame {
                     .addComponent(txtTelefoneResponsavel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvar)
-                    .addComponent(btnExcluir)
-                    .addComponent(btnHistorico))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(btnSalvar)
                 .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public JButton getBtnSalvar() {
         return btnSalvar;
     }
 
-    public JButton getBtnExcluir() {
-        return btnExcluir;
-    }
-
-    public JButton getBtnHistorico() {
-        return btnHistorico;
-    }
-
     public JLabel getLblApelido() {
         return lblApelido;
+    }
+
+    public JLabel getLblCpf() {
+        return lblCpf;
+    }
+
+    public JLabel getLblLogin() {
+        return lblLogin;
     }
 
     public JLabel getLblNome() {
@@ -257,6 +247,14 @@ public class ManterPerfilView extends javax.swing.JInternalFrame {
 
     public JLabel getLblRedeSocial() {
         return lblRedeSocial;
+    }
+
+    public JLabel getLblSenha() {
+        return lblSenha;
+    }
+
+    public JLabel getLblSenhaNovamente() {
+        return lblSenhaNovamente;
     }
 
     public JLabel getLblTelefone() {
@@ -271,8 +269,20 @@ public class ManterPerfilView extends javax.swing.JInternalFrame {
         return lblTelefoneResponsavel2;
     }
 
+    public JPanel getPnUsuario() {
+        return pnUsuario;
+    }
+
     public JTextField getTxtApelido() {
         return txtApelido;
+    }
+
+    public JFormattedTextField getTxtCpf() {
+        return txtCpf;
+    }
+
+    public JTextField getTxtLogin() {
+        return txtLogin;
     }
 
     public JTextField getTxtNome() {
@@ -281,6 +291,14 @@ public class ManterPerfilView extends javax.swing.JInternalFrame {
 
     public JTextField getTxtRedeSocial() {
         return txtRedeSocial;
+    }
+
+    public JPasswordField getTxtSenha() {
+        return txtSenha;
+    }
+
+    public JPasswordField getTxtSenhaNovamente() {
+        return txtSenhaNovamente;
     }
 
     public JFormattedTextField getTxtTelefone() {
@@ -294,46 +312,9 @@ public class ManterPerfilView extends javax.swing.JInternalFrame {
     public JFormattedTextField getTxtTelefoneResponsavel2() {
         return txtTelefoneResponsavel2;
     }
-
-    public JLabel getLblCpf() {
-        return lblCpf;
-    }
-
-    public JFormattedTextField getTxtCpf() {
-        return txtCpf;
-    }
-
-    public JLabel getLblLogin() {
-        return lblLogin;
-    }
-
-    public JLabel getLblSenha() {
-        return lblSenha;
-    }
-
-    public JLabel getLblSenhaNovamente() {
-        return lblSenhaNovamente;
-    }
-
-    public JPanel getPnUsuario() {
-        return pnUsuario;
-    }
-
-    public JTextField getTxtLogin() {
-        return txtLogin;
-    }
-
-    public JPasswordField getTxtSenha() {
-        return txtSenha;
-    }
-
-    public JPasswordField getTxtSenhaNovamente() {
-        return txtSenhaNovamente;
-    }
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnExcluir;
-    private javax.swing.JButton btnHistorico;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel lblApelido;
     private javax.swing.JLabel lblCpf;

@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufes.republica.view;
+package br.ufes.republica.view.login;
+
+import br.ufes.republica.view.tela_inicial.TelaInicialPresenter;
+import br.ufes.republica.view.perfil.presenter.CadastroPerfilPresenter;
 
 /**
  *
@@ -12,6 +15,7 @@ package br.ufes.republica.view;
 public class LoginPresenter {
 
     private LoginView view;
+    private CadastroPerfilPresenter cadastro;
 
     public LoginPresenter() {
         this.view = new LoginView();
@@ -23,6 +27,11 @@ public class LoginPresenter {
         });
 
         this.view.getBtnCadastrar().addActionListener((e) -> {
+            if(cadastro != null) {
+                cadastro.getView().dispose();
+                cadastro = null;
+            }
+            cadastro = new CadastroPerfilPresenter();
         });
 
         this.view.setVisible(true);

@@ -1,63 +1,77 @@
 package br.ufes.republica.view.perfil.presenter.state;
 
+import br.ufes.republica.models.Pessoa;
 import br.ufes.republica.models.Usuario;
 import br.ufes.republica.view.perfil.presenter.ManterPerfilPresenter;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
 
 public class VisualizacaoManterPresenter extends ManterPresenterState {
-    
+
     public VisualizacaoManterPresenter(ManterPerfilPresenter presenter, Usuario usuario) {
         super(presenter);
         init(usuario);
     }
-    
+
+    public VisualizacaoManterPresenter(ManterPerfilPresenter presenter, Pessoa pessoa) {
+        super(presenter);
+        init(pessoa);
+    }
+
     private void init(Usuario usuario) {
-        setDados(pessoa);
+        setDados(usuario);
         disableCampos();
         var view = presenter.getView();
-        view.getBtnSalvar().setText("Habilitar Edição");
         view.getBtnExcluir().setVisible(true);
-        
-        JButton btnSalvar = view.getBtnSalvar();
-        JButton btnExcluir = view.getBtnExcluir();
-        JButton btnHistorico = view.getBtnHistorico();
-        
-        for(ActionListener ae : btnSalvar.getActionListeners()) {
-            btnSalvar.removeActionListener(ae);
-        }
-        
-        for(ActionListener ae : btnExcluir.getActionListeners()) {
-            btnExcluir.removeActionListener(ae);
-        }
-        
-        for(ActionListener ae : btnHistorico.getActionListeners()) {
-            btnHistorico.removeActionListener(ae);
-        }
-        
+        view.getBtnHistorico().setVisible(true);
+        view.getBtnSalvar().setVisible(true);
+        view.getBtnSalvar().setText("Habilitar Edição");
+
         view.getBtnSalvar().addActionListener((ae) -> {
             editar();
         });
-        
+
         view.getBtnExcluir().addActionListener((ae) -> {
             excluir();
         });
-        
+
         view.getBtnHistorico().addActionListener((ae) -> {
-            cancelar();
+            historico();
         });
     }
-    
+
+    private void init(Pessoa pessoa) {
+        setDados(pessoa);
+        disableCampos();
+        var view = presenter.getView();
+        view.getBtnExcluir().setVisible(false);
+        view.getBtnHistorico().setVisible(true);
+        view.getBtnSalvar().setVisible(false);
+
+        view.getBtnSalvar().addActionListener((ae) -> {
+            editar();
+        });
+
+        view.getBtnExcluir().addActionListener((ae) -> {
+            excluir();
+        });
+
+        view.getBtnHistorico().addActionListener((ae) -> {
+            historico();
+        });
+    }
+
     @Override
     public void excluir() {
-        var pessoa = getDados();
         // Excluir
     }
-    
+
     @Override
     public void editar() {
         enableCampos();
         presenter.setState(new EdicaoManterPresenter(presenter));
     }
-    
+
+    public void historico() {
+        // exibir tela de historico
+    }
+
 }

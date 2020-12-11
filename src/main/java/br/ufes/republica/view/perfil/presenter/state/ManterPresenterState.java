@@ -4,13 +4,21 @@ import br.ufes.republica.models.Pessoa;
 import br.ufes.republica.models.Usuario;
 import br.ufes.republica.view.perfil.presenter.ManterPerfilPresenter;
 import java.util.Arrays;
+import javax.swing.JButton;
 
 public abstract class ManterPresenterState {
 
     protected ManterPerfilPresenter presenter;
 
     public ManterPresenterState(ManterPerfilPresenter presenter) {
+        if (presenter == null) {
+            throw new RuntimeException("Presenter nao informada");
+        }
         this.presenter = presenter;
+        var view = this.presenter.getView();
+        removerActionListeners(view.getBtnExcluir());
+        removerActionListeners(view.getBtnHistorico());
+        removerActionListeners(view.getBtnSalvar());
     }
 
     public void salvar() {
@@ -57,7 +65,18 @@ public abstract class ManterPresenterState {
         view.getTxtTelefone().setText(pessoa.getTelefone());
         view.getTxtTelefoneResponsavel1().setText(pessoa.getTelefoneResponsavel1());
         view.getTxtTelefoneResponsavel2().setText(pessoa.getTelefoneResponsavel2());
-        view.getTxtLogin().setText(usuario.getLogin());        
+        view.getTxtLogin().setText(usuario.getLogin());
+    }
+
+    protected void setDados(Pessoa pessoa) {
+        var view = presenter.getView();
+        view.getTxtNome().setText(pessoa.getNome());
+        view.getTxtApelido().setText(pessoa.getApelido());
+        view.getTxtCpf().setText(pessoa.getCPF());
+        view.getTxtRedeSocial().setText(pessoa.getLinkRedeSocial());
+        view.getTxtTelefone().setText(pessoa.getTelefone());
+        view.getTxtTelefoneResponsavel1().setText(pessoa.getTelefoneResponsavel1());
+        view.getTxtTelefoneResponsavel2().setText(pessoa.getTelefoneResponsavel2());
     }
 
     protected void disableCampos() {
@@ -87,10 +106,16 @@ public abstract class ManterPresenterState {
         view.getTxtSenha().setEditable(true);
         view.getTxtSenhaNovamente().setEditable(true);
     }
-    
+
     protected boolean senhasConferem() {
         var senha = Arrays.toString(presenter.getView().getTxtSenha().getPassword());
         var senhaNovamente = Arrays.toString(presenter.getView().getTxtSenhaNovamente().getPassword());
         return senha != null && senhaNovamente != null ? senha.equals(senhaNovamente) : false;
+    }
+
+    private void removerActionListeners(JButton btn) {
+        for (var action : btn.getActionListeners()) {
+            btn.removeActionListener(action);
+        }
     }
 }

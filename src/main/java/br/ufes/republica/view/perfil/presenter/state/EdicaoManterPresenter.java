@@ -1,47 +1,35 @@
 package br.ufes.republica.view.perfil.presenter.state;
 
-import com.contatos.revisao.command.EditarContatoCommand;
-import com.contatos.revisao.model.Contato;
-import com.contatos.revisao.presenter.ManterContatoPresenter;
-import com.contatos.revisao.service.ContatoService;
-import java.awt.event.ActionListener;
+import br.ufes.republica.models.Usuario;
+import br.ufes.republica.view.perfil.presenter.ManterPerfilPresenter;
 
 public class EdicaoManterPresenter extends ManterPresenterState {
-    
-    public EdicaoManterPresenter(ManterContatoPresenter presenter) {
+
+    public EdicaoManterPresenter(ManterPerfilPresenter presenter) {
         super(presenter);
         init();
     }
-    
+
     private void init() {
-        presenter.getView().getBtnExcluir().setVisible(false);
-        presenter.getView().getBtnSalvar().setText("Salvar");
-        
-        for(ActionListener ae : presenter.getView().getBtnSalvar().getActionListeners()) {
-           presenter.getView().getBtnSalvar().removeActionListener(ae);
-        }
-        
-        for(ActionListener ae : presenter.getView().getBtnFechar().getActionListeners()) {
-            presenter.getView().getBtnFechar().removeActionListener(ae);
-        }
-         
-        presenter.getView().getBtnSalvar().addActionListener((ae) -> {
+        var view = presenter.getView();
+        view.getBtnExcluir().setVisible(false);
+        view.getBtnHistorico().setVisible(false);
+        view.getBtnSalvar().setVisible(true);
+        view.getBtnSalvar().setText("Salvar");
+
+        view.getBtnSalvar().addActionListener((ae) -> {
             salvar();
         });
-        
-        presenter.getView().getBtnFechar().addActionListener((ae) -> {
-            cancelar();
-        });
     }
-    
+
     @Override
     public void salvar() {
-        Contato contato = getDados();
-        presenter.setCommand(new EditarContatoCommand(contato, new ContatoService()));
-        if(presenter.getCommand().executar()) {
+        Usuario usuario = getDados();
+        /*presenter.setCommand(new EditarContatoCommand(contato, new ContatoService()));
+        if (presenter.getCommand().executar()) {
             presenter.notifyObservers();
             presenter.setState(new VisualizacaoManterPresenter(presenter, contato));
-        }
+        }*/
     }
-    
+
 }
