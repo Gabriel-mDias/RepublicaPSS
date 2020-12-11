@@ -7,6 +7,7 @@ package br.ufes.republica.view.republica;
 
 import br.ufes.republica.models.Endereco;
 import br.ufes.republica.models.Republica;
+import br.ufes.republica.service.RepublicaService;
 import br.ufes.republica.view.presenter.BaseInternalFramePresenter;
 import br.ufes.republica.view.republica.state.EditarRepublicaPresenter;
 import br.ufes.republica.view.republica.state.ManterRepublicaState;
@@ -28,6 +29,13 @@ public class ManterRepublicaPresenter extends BaseInternalFramePresenter<EditarR
     
     public ManterRepublicaPresenter(JDesktopPane container, Republica republica){
         super(container, new EditarRepublicaView());
+        
+        try{
+                republica = new RepublicaService().getRepublicaUsuario(Long.valueOf(5));
+        }catch(Exception ex){
+            
+        }
+        
         
         if(republica == null){
             JOptionPane.showMessageDialog(getView(), "Usuário sem república ou informação não foi encontrada", "Editar República", JOptionPane.OK_OPTION);
