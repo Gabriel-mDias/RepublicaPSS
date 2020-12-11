@@ -30,9 +30,63 @@ public class RepublicaDAOSQLite implements IRepublicaDAO {
     
     @Override
     public void insert(Republica republica) throws Exception {
+        
         try {
-            String SQL = "INSERT INTO Republica(nome, vantagens, estatuto, dataFundacao, dataExtincao, id_endereco, numTotalVagas, estado) " + 
-                                        "VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
+            String SQL = "INSERT INTO Endereco(logradouro, cep, bairro, cidade, uf, pontoReferencia, localizacaoGeografica) " + 
+                                        "VALUES(?,?,?,?,?,?,?);";
+            
+            Connection conn = this.manager.conectar();
+            this.manager.abreTransacao();
+            
+            PreparedStatement ps = conn.prepareStatement(SQL);
+            ps.setString(1, republica.getEndereco().getLogradouro());
+            ps.setString(2, republica.getEndereco().getCep());
+            ps.setString(3, republica.getEndereco().getBairro());
+            ps.setString(4, republica.getEndereco().getCidade());
+            ps.setString(5, republica.getEndereco().getUf());
+            ps.setString(6, republica.getEndereco().getPontoReferencia());
+            ps.setString(7, republica.getEndereco().getLocalizacaoGeografica());
+            ps.executeUpdate();
+
+            this.manager.fechaTransacao();
+            this.manager.close();
+        } catch (Exception ex) {
+            this.manager.desfazTransacao();
+            this.manager.close();
+            throw new Exception("Erro ao inserir");
+        }
+        
+        try {
+            String SQL = "SELECT id FROM Endereco WHERE logradouro = ?, cep= ?, bairro= ?, cidade= ?, uf= ?, pontoReferencia= ?, localizacaoGeografica= ?;";
+            
+            Connection conn = this.manager.conectar();
+            this.manager.abreTransacao();
+            
+            PreparedStatement ps = conn.prepareStatement(SQL);
+            ps.setString(1, republica.getEndereco().getLogradouro());
+            ps.setString(2, republica.getEndereco().getCep());
+            ps.setString(3, republica.getEndereco().getBairro());
+            ps.setString(4, republica.getEndereco().getCidade());
+            ps.setString(5, republica.getEndereco().getUf());
+            ps.setString(6, republica.getEndereco().getPontoReferencia());
+            ps.setString(7, republica.getEndereco().getLocalizacaoGeografica());
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                republica.getEndereco().setId(rs.getLong(1));
+            }
+
+            this.manager.fechaTransacao();
+            this.manager.close();
+        } catch (Exception ex) {
+            this.manager.desfazTransacao();
+            this.manager.close();
+            throw new Exception("Erro ao inserir");
+        }
+        
+        try {
+            String SQL = "INSERT INTO Republica(nome, vantagens, estatuto, dataFundacao, dataExtincao, id_endereco, numTotalVagas, estado, id_representante) " + 
+                                        "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
             
             Connection conn = this.manager.conectar();
             this.manager.abreTransacao();
@@ -46,6 +100,7 @@ public class RepublicaDAOSQLite implements IRepublicaDAO {
             ps.setLong(6, republica.getEndereco().getId());
             ps.setLong(7, republica.getNumeroTotalVagas());
             ps.setString(8, republica.getEstado().toString());
+            ps.setLong(9, republica.getRepresentante().getId());
             ps.executeUpdate();
 
             this.manager.fechaTransacao();

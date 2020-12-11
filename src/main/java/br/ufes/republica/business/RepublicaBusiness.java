@@ -1,6 +1,7 @@
 package br.ufes.republica.business;
 
 import br.ufes.republica.dao.interfaces.IRepublicaDAO;
+import br.ufes.republica.exception.BusinessException;
 import br.ufes.republica.models.Republica;
 import java.util.List;
 
@@ -17,9 +18,11 @@ public class RepublicaBusiness {
     
     public void insert(Republica republica) throws Exception{
         if(republica == null){
-            throw new RuntimeException("Republica fornecida é invalda!");
+            throw new BusinessException("Republica fornecida é invalda!");
         }else if(republica.getId() == null){
-            throw new RuntimeException("ID da Republica fornecida é invaldo!");
+            throw new BusinessException("ID da Republica fornecida é invaldo!");
+        }else if(republica.getRepresentante().getId() == null){
+            throw new BusinessException("ID do Representante fornecida é invaldo!");
         }
         
         this.republicaDAO.insert(republica);
@@ -27,9 +30,9 @@ public class RepublicaBusiness {
     
     public void update(Republica republica) throws Exception{
         if(republica == null){
-            throw new RuntimeException("Republica fornecida é invalda!");
+            throw new BusinessException("Republica fornecida é invalda!");
         }else if(republica.getId() == null){
-            throw new RuntimeException("ID da Republica fornecida é invaldo!");
+            throw new BusinessException("ID da Republica fornecida é invaldo!");
         }
         
         this.republicaDAO.update(republica);
@@ -37,7 +40,7 @@ public class RepublicaBusiness {
     
     public void delete(Long id) throws Exception{
         if(id == null){
-            throw new RuntimeException("ID da Republica fornecida é invaldo!");
+            throw new BusinessException("ID da Republica fornecida é invaldo!");
         }
         
         this.republicaDAO.delete(id);
@@ -45,7 +48,7 @@ public class RepublicaBusiness {
     
     public Republica getById(Long id) throws Exception{
         if(id == null){
-            throw new RuntimeException("ID da Republica fornecida é invaldo!");
+            throw new BusinessException("ID da Republica fornecida é invaldo!");
         }
         
         return this.republicaDAO.getById(id);
@@ -53,7 +56,7 @@ public class RepublicaBusiness {
     
     public Republica getByIdMorador(Long id) throws Exception{
         if(id == null){
-            throw new RuntimeException("ID do Morador fornecido é invaldo!");
+            throw new BusinessException("ID do Morador fornecido é invaldo!");
         }
         
         return this.republicaDAO.getByIdMorador(id);

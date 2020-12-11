@@ -5,13 +5,12 @@
  */
 package br.ufes.republica.view.republica;
 
-import br.ufes.republica.collection.EstadoRepublicaCollection;
 import br.ufes.republica.models.Endereco;
 import br.ufes.republica.models.Republica;
-import br.ufes.republica.service.RepublicaService;
-import br.ufes.republica.view.moradores.ListaMoradoresPresenter;
 import br.ufes.republica.view.presenter.BaseInternalFramePresenter;
 import br.ufes.republica.view.republica.state.EditarRepublicaPresenter;
+import br.ufes.republica.view.republica.state.ManterRepublicaState;
+import br.ufes.republica.view.republica.state.NovaRepublicaPresenter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
@@ -22,51 +21,60 @@ import javax.swing.JOptionPane;
  *
  * @author gabriel
  */
-public class VisualizarRepublicaPresenter extends BaseInternalFramePresenter<VisualizarRepublicaView> {
+public class ManterRepublicaPresenter extends BaseInternalFramePresenter<EditarRepublicaView>{
     
-    private Republica republica;
-    private RepublicaService service;
-
-    public VisualizarRepublicaPresenter(Republica republica, JDesktopPane container) {
-        super(container, new VisualizarRepublicaView());
-        this.republica = republica;
-        this.service = new RepublicaService();
-
+    private ManterRepublicaState state;
+    protected Republica entrada;
+    
+    public ManterRepublicaPresenter(JDesktopPane container, Republica republica){
+        super(container, new EditarRepublicaView());
         
-        this.getView().getBtnExcluir().addActionListener( new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try{
-                    republica.setEstado(EstadoRepublicaCollection.getInstancia().cria("EstadoExtinta"));
-                    service.update(republica);
-                    JOptionPane.showMessageDialog(getView(), "República excluida!", "Excluir República", JOptionPane.OK_OPTION);
-                }catch(Exception ex){
-                    JOptionPane.showMessageDialog(getView(), ex.getMessage(), "Excluir República", JOptionPane.ERROR_MESSAGE);
+        if(republica == null){
+            JOptionPane.showMessageDialog(getView(), "Usuário sem república ou informação não foi encontrada", "Editar República", JOptionPane.OK_OPTION);
+        }else{
+        
+            this.state = new EditarRepublicaPresenter(republica, this);
+            this.entrada = republica;
+
+            this.inserirTela(entrada);
+
+            this.getView().getBtnConfirmar().addActionListener( new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        state.confirmarAction(obterTela());
+                        JOptionPane.showMessageDialog(getView(), "República editada!", "Editar República", JOptionPane.OK_OPTION);
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(getView(), ex.getMessage(), "Editar República", JOptionPane.OK_OPTION);
+                    }
                 }
-                
-            }
-        });
+            });
+
+            this.getView().setVisible(true);
+        }
+    }
+    
+    public ManterRepublicaPresenter(JDesktopPane container){
+        super(container, new EditarRepublicaView());
+        this.state = new NovaRepublicaPresenter(this);
         
-        this.getView().getBtnManterMoradores().addActionListener(new ActionListener() {
+        this.getView().getBtnConfirmar().addActionListener( new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                container.add(new ListaMoradoresPresenter(republica, container).getView());
+                try {
+                    state.confirmarAction(obterTela());
+                    JOptionPane.showMessageDialog(getView(), "República salva!", "Cadastrar República", JOptionPane.OK_OPTION);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(getView(), ex.getMessage(), "Cadastrar República", JOptionPane.OK_OPTION);
+                }
             }
         });
-        
-        this.getView().getBtnEditar().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new ManterRepublicaPresenter(container, republica);
-            }
-        });
-        
         
         this.getView().setVisible(true);
     }
     
     
-    private void inserirTela(Republica republica){
+    protected void inserirTela(Republica republica){
         this.getView().getTxtNome().setText(republica.getNome());
         this.getView().getTxtFundacao().setText(republica.getDataFundacao().toString());
         this.getView().getTxtDespesaMedia().setText(String.valueOf(republica.getDespesaMediaMorador()));
@@ -82,7 +90,12 @@ public class VisualizarRepublicaPresenter extends BaseInternalFramePresenter<Vis
         this.getView().getTxtCEP().setText(republica.getEndereco().getCep());
     }
     
-    private void obterTela(Republica republica){
+    protected Republica obterTela(){
+        Republica republica = new Republica();
+        if(this.entrada != null){
+            republica.setId(this.entrada.getId());
+        }
+        
         republica.setNome(this.getView().getTxtNome().getText());
         republica.setDataFundacao(LocalDate.now());
         republica.setDespesaMediaMorador( Integer.valueOf(this.getView().getTxtDespesaMedia().getText()) );
@@ -97,5 +110,8 @@ public class VisualizarRepublicaPresenter extends BaseInternalFramePresenter<Vis
         republica.getEndereco().setPontoReferencia(this.getView().getTxtPontoReferencia().getText());
         republica.getEndereco().setLocalizacaoGeografica(this.getView().getTxtLocalizacaoGeografica().getText());
         republica.getEndereco().setCep(this.getView().getTxtCEP().getText());
+        
+        return republica;
     }
+    
 }

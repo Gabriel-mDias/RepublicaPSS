@@ -39,7 +39,7 @@ public class TelaInicialView extends javax.swing.JFrame {
         itemManterMorador = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        itemNovaRepublica = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         itemManterReclamacao = new javax.swing.JMenuItem();
@@ -92,13 +92,13 @@ public class TelaInicialView extends javax.swing.JFrame {
         });
         menuRepublica.add(jMenuItem4);
 
-        jMenuItem5.setText("Criar república");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        itemNovaRepublica.setText("Criar república");
+        itemNovaRepublica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                itemNovaRepublicaActionPerformed(evt);
             }
         });
-        menuRepublica.add(jMenuItem5);
+        menuRepublica.add(itemNovaRepublica);
 
         jMenuItem6.setText("Buscar vagas");
         menuRepublica.add(jMenuItem6);
@@ -208,9 +208,9 @@ public class TelaInicialView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_itemTarefaActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void itemNovaRepublicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemNovaRepublicaActionPerformed
         
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_itemNovaRepublicaActionPerformed
 
     private void itemManterMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemManterMoradorActionPerformed
     
@@ -275,6 +275,12 @@ public class TelaInicialView extends javax.swing.JFrame {
     public static void setDesktop(JDesktopPane Desktop) {
         TelaInicialView.Desktop = Desktop;
     }
+
+    public JMenuItem getItemNovaRepublica() {
+        return itemNovaRepublica;
+    }
+    
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane Desktop;
@@ -283,6 +289,7 @@ public class TelaInicialView extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemManterPerfil;
     private javax.swing.JMenuItem itemManterReclamacao;
     private javax.swing.JMenuItem itemManterRepublica;
+    private javax.swing.JMenuItem itemNovaRepublica;
     private javax.swing.JMenuItem itemTarefa;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
@@ -295,7 +302,6 @@ public class TelaInicialView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenu menuMorador;
