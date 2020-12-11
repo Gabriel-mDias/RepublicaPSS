@@ -6,7 +6,7 @@
 package br.ufes.republica.view.moradores;
 
 import br.ufes.republica.models.Pessoa;
-import br.ufes.republica.services.PessoaService;
+import br.ufes.republica.service.PessoaService;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

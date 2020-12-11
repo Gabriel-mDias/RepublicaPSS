@@ -1,18 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.ufes.republica.view;
 
-import br.ufes.republica.view.login.LoginPresenter;
+import br.ufes.republica.service.UsuarioService;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
-/**
- *
- * @author gabriel
- */
 public class Principal {
+    
     public static void main(String[] args) {
-        new LoginPresenter();
+        
+        Principal app = new Principal();
+        Properties prop = app.loadPropertiesFile("config.properties");
+        System.setProperty("db.name", prop.getProperty("db.name"));
+        
+//        new LoginPresenter();
+
+        var service = new UsuarioService();
+        try {
+            var usuario = service.getByLogin("teste");
+            System.out.println(usuario.getSenha());
+        } catch(Exception e) {
+        }
+        
     }
+
+    public Properties loadPropertiesFile(String filePath) {
+        Properties prop = new Properties();
+
+        try (InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream(filePath)) {
+            prop.load(resourceAsStream);
+        } catch (IOException e) {
+            System.err.println("Unable to load properties file : " + filePath);
+        }
+
+        return prop;
+    }
+    
 }

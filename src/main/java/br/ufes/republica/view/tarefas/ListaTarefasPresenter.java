@@ -6,7 +6,7 @@
 package br.ufes.republica.view.tarefas;
 
 import br.ufes.republica.models.Tarefa;
-import br.ufes.republica.services.TarefaService;
+import br.ufes.republica.service.TarefaService;
 import br.ufes.republica.view.presenter.BaseInternalFramePresenter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

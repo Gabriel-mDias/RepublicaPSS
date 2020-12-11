@@ -10,7 +10,7 @@ import java.util.List;
 
 public final class EstadoPessoaCollection {
     
-    private List<EstadoPessoaFactory> factories = new ArrayList<>(); 
+    private List<EstadoPessoaFactory> factories = new ArrayList<>();
     private static EstadoPessoaCollection instancia;
     
     private EstadoPessoaCollection() {
