@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.ufes.republica.view.tela_inicial;
 
 import br.ufes.republica.exception.BusinessException;
@@ -20,10 +15,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
-/**
- *
- * @author gabriel
- */
 public class TelaInicialPresenter {
     
     private TelaInicialView view;
@@ -86,6 +77,13 @@ public class TelaInicialPresenter {
             public void actionPerformed(ActionEvent e) {
                 Republica republica = null;
                 addContainer(new ListarFeedbackPresenter(republica, view.getDesktop()).getView());
+            }
+        });
+        
+        this.view.getItemSair().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                view.dispose();
             }
         });
         

@@ -177,9 +177,6 @@ public class ListaTarefasView extends javax.swing.JInternalFrame {
         return btnExcluir;
     }
 
-    
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCadastrar;

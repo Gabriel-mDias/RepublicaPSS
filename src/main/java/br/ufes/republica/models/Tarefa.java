@@ -11,14 +11,17 @@ public class Tarefa {
     private LocalDate dataTermino;
     private boolean finalizada;
     private List<TarefaMorador> tarefasMoradores;
+    private String moradores;
+    private Republica republica;
 
-    public Tarefa(Long id, LocalDate dataAgendamento, String descricao, LocalDate dataTermino, boolean finalizada, List<TarefaMorador> tarefasMoradores) {
+    public Tarefa(Long id, LocalDate dataAgendamento, String descricao, LocalDate dataTermino, boolean finalizada, String moradores, Republica republica) {
         this.id = id;
         this.dataAgendamento = dataAgendamento;
         this.descricao = descricao;
         this.dataTermino = dataTermino;
         this.finalizada = finalizada;
-        this.tarefasMoradores = tarefasMoradores;
+        this.moradores = moradores;
+        this.republica = republica;
     }
 
     public Tarefa() {
@@ -62,6 +65,22 @@ public class Tarefa {
 
     public void setFinalizada(boolean finalizada) {
         this.finalizada = finalizada;
+    }
+
+    public String getMoradores() {
+        return moradores;
+    }
+
+    public void setMoradores(String moradores) {
+        this.moradores = moradores;
+    }
+
+    public Republica getRepublica() {
+        return republica;
+    }
+
+    public void setRepublica(Republica republica) {
+        this.republica = republica;
     }
 
     public List<TarefaMorador> getTarefasMoradores() {
