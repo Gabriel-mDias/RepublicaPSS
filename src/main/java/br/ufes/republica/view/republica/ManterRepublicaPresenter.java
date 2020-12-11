@@ -65,7 +65,7 @@ public class ManterRepublicaPresenter extends BaseInternalFramePresenter<EditarR
                     state.confirmarAction(obterTela());
                     JOptionPane.showMessageDialog(getView(), "República salva!", "Cadastrar República", JOptionPane.OK_OPTION);
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(getView(), ex.getMessage(), "Cadastrar República", JOptionPane.OK_OPTION);
+                    JOptionPane.showMessageDialog(getView(), ex, "Cadastrar República", JOptionPane.OK_OPTION);
                 }
             }
         });

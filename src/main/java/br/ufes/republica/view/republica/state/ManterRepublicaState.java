@@ -15,10 +15,12 @@ public abstract class ManterRepublicaState {
     public ManterRepublicaState(Republica entradar, ManterRepublicaPresenter controler) {
         this.entrada = entrada;
         this.controler = controler;
+        this.service = new RepublicaService();
     }
 
     public ManterRepublicaState(ManterRepublicaPresenter controler) {
         this.controler = controler;
+        this.service = new RepublicaService();
     }
     
     public abstract void confirmarAction(Republica republica) throws Exception;

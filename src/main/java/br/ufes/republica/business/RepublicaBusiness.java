@@ -19,8 +19,6 @@ public class RepublicaBusiness {
     public void insert(Republica republica) throws Exception{
         if(republica == null){
             throw new BusinessException("Republica fornecida é invalda!");
-        }else if(republica.getId() == null){
-            throw new BusinessException("ID da Republica fornecida é invaldo!");
         }else if(republica.getRepresentante().getId() == null){
             throw new BusinessException("ID do Representante fornecida é invaldo!");
         }

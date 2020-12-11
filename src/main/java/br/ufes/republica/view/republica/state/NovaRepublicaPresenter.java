@@ -7,7 +7,6 @@ package br.ufes.republica.view.republica.state;
 
 import br.ufes.republica.models.Pessoa;
 import br.ufes.republica.models.Republica;
-import br.ufes.republica.service.RepublicaService;
 import br.ufes.republica.view.republica.ManterRepublicaPresenter;
 
 /**
@@ -16,7 +15,7 @@ import br.ufes.republica.view.republica.ManterRepublicaPresenter;
  */
 public class NovaRepublicaPresenter extends ManterRepublicaState{
     
-    private RepublicaService service;
+    
     
     public NovaRepublicaPresenter(ManterRepublicaPresenter controler) {
         super(controler);

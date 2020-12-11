@@ -57,19 +57,12 @@ public class RepublicaDAOSQLite implements IRepublicaDAO {
         }
         
         try {
-            String SQL = "SELECT id FROM Endereco WHERE logradouro = ?, cep= ?, bairro= ?, cidade= ?, uf= ?, pontoReferencia= ?, localizacaoGeografica= ?;";
+            String SQL = "SELECT MAX(id) FROM Endereco;";
             
             Connection conn = this.manager.conectar();
             this.manager.abreTransacao();
             
             PreparedStatement ps = conn.prepareStatement(SQL);
-            ps.setString(1, republica.getEndereco().getLogradouro());
-            ps.setString(2, republica.getEndereco().getCep());
-            ps.setString(3, republica.getEndereco().getBairro());
-            ps.setString(4, republica.getEndereco().getCidade());
-            ps.setString(5, republica.getEndereco().getUf());
-            ps.setString(6, republica.getEndereco().getPontoReferencia());
-            ps.setString(7, republica.getEndereco().getLocalizacaoGeografica());
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
@@ -85,7 +78,7 @@ public class RepublicaDAOSQLite implements IRepublicaDAO {
         }
         
         try {
-            String SQL = "INSERT INTO Republica(nome, vantagens, estatuto, dataFundacao, dataExtincao, id_endereco, numTotalVagas, estado, id_representante) " + 
+            String SQL = "INSERT INTO Republica(nome, vantagens, estatuto, dataFundacao, id_endereco, numeroTotalVagas, estado, id_representante, despesaMediaMorador ) " + 
                                         "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
             
             Connection conn = this.manager.conectar();
@@ -96,11 +89,11 @@ public class RepublicaDAOSQLite implements IRepublicaDAO {
             ps.setString(2, republica.getVantagens());
             ps.setString(3, republica.getEstatuto());
             ps.setDate(4, Date.valueOf(republica.getDataFundacao()));
-            ps.setDate(5, Date.valueOf(republica.getDataExtincao()));
-            ps.setLong(6, republica.getEndereco().getId());
-            ps.setLong(7, republica.getNumeroTotalVagas());
-            ps.setString(8, republica.getEstado().toString());
-            ps.setLong(9, republica.getRepresentante().getId());
+            ps.setLong(5, republica.getEndereco().getId());
+            ps.setLong(6, republica.getNumeroTotalVagas());
+            ps.setString(7, "EstadoDisponivel");
+            ps.setLong(8, republica.getRepresentante().getId());
+            ps.setDouble(9, republica.getDespesaMediaMorador());
             ps.executeUpdate();
 
             this.manager.fechaTransacao();
@@ -116,7 +109,7 @@ public class RepublicaDAOSQLite implements IRepublicaDAO {
     public void update(Republica republica) throws Exception {
         try {
             String SQL = "UPDATE Republica SET nome = ?, vantagens = ?, estatuto = ?, dataFundacao = ?,"+
-                    " dataExtincao = ?, id_endereco = ?, numTotalVagas = ?, estado = ?, despesaMediaMorador = ? WHERE id = ?;";
+                    " dataExtincao = ?, id_endereco = ?, numeroTotalVagas = ?, estado = ?, despesaMediaMorador = ? WHERE id = ?;";
             
             Connection conn = this.manager.conectar();
             this.manager.abreTransacao();
@@ -168,7 +161,7 @@ public class RepublicaDAOSQLite implements IRepublicaDAO {
     @Override
     public Republica getById(Long id) throws Exception {
         try {
-            String SQL = "SELECT r.nome, r.vantagens, r.estatuto, r.dataFundacao, r.dataExtincao, r.numTotalVagas, r.estado, r.despesaMediaMorador, "+
+            String SQL = "SELECT r.nome, r.vantagens, r.estatuto, r.dataFundacao, r.dataExtincao, r.numeroTotalVagas, r.estado, r.despesaMediaMorador, "+
                     " pRep.id, pRep.nome, pRep.apelido, pRep.telefone, pRep.cpf, pRep.linkRedeSocial, pRep.telefoneResponsavel1, pRep.telefoneResponsavel2, pRep.estado, "+
                     " e.id, e.logradouro, e.cep, e.bairro, e.cidade, e.uf, e.pontoReferencia, e.localizacaoGeografica "+
                     " FROM Republica r INNER JOIN Pessoa pRep ON r.id_representante = pRep.id AND r.id = pRep.id_republica "+
@@ -234,7 +227,7 @@ public class RepublicaDAOSQLite implements IRepublicaDAO {
     @Override
     public Republica getByIdMorador(Long idPessoa) throws Exception {
         try {
-            String SQL = "SELECT r.nome, r.vantagens, r.estatuto, r.dataFundacao, r.dataExtincao, r.numTotalVagas, r.estado, r.despesaMediaMorador, r.id,"+
+            String SQL = "SELECT r.nome, r.vantagens, r.estatuto, r.dataFundacao, r.dataExtincao, r.numeroTotalVagas, r.estado, r.despesaMediaMorador, r.id,"+
                     "  pRep.nome, pRep.apelido, pRep.telefone, pRep.cpf, pRep.linkRedeSocial, pRep.telefoneResponsavel1, pRep.telefoneResponsavel2, pRep.estado, "+
                     " e.id, e.logradouro, e.cep, e.bairro, e.cidade, e.uf, e.pontoReferencia, e.localizacaoGeografica "+
                     " FROM Republica r INNER JOIN Pessoa p ON r.id = p.id_republica "+
@@ -303,7 +296,7 @@ public class RepublicaDAOSQLite implements IRepublicaDAO {
         List<Republica> republicasDisponiveis = new ArrayList<>();
         
         try {
-            String SQL = "SELECT r.nome, r.vantagens, r.estatuto, r.dataFundacao, r.dataExtincao, r.numTotalVagas, r.estado, r.despesaMediaMorador, "+
+            String SQL = "SELECT r.nome, r.vantagens, r.estatuto, r.dataFundacao, r.dataExtincao, r.numeroTotalVagas, r.estado, r.despesaMediaMorador, "+
                     " pRep.id, pRep.nome, pRep.apelido, pRep.telefone, pRep.cpf, pRep.linkRedeSocial, pRep.telefoneResponsavel1, pRep.telefoneResponsavel2, pRep.estado, "+
                     " e.id, e.logradouro, e.cep, e.bairro, e.cidade, e.uf, e.pontoReferencia, e.localizacaoGeografica, "+
                     " r.id "+
