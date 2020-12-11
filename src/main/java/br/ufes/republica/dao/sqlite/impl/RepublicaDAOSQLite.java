@@ -103,6 +103,27 @@ public class RepublicaDAOSQLite implements IRepublicaDAO {
             this.manager.close();
             throw new Exception("Erro ao inserir");
         }
+        
+        try {
+            String SQL = "SELECT MAX(id) FROM Republica;";
+            
+            Connection conn = this.manager.conectar();
+            this.manager.abreTransacao();
+            
+            PreparedStatement ps = conn.prepareStatement(SQL);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                republica.setId(rs.getLong(1));
+            }
+
+            this.manager.fechaTransacao();
+            this.manager.close();
+        } catch (Exception ex) {
+            this.manager.desfazTransacao();
+            this.manager.close();
+            throw new Exception("Erro ao buscar o Id da Republica inserida");
+        }
     }
 
     @Override

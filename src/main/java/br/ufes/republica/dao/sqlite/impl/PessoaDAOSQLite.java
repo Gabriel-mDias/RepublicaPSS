@@ -16,6 +16,14 @@ import java.util.List;
 public class PessoaDAOSQLite implements IPessoaDAO {
 
     private SqliteManager manager;
+
+    public PessoaDAOSQLite(SqliteManager manager) {
+        if(manager == null){
+            new RuntimeException("DAO não fornecida!");
+        }
+        
+        this.manager = manager;
+    }
     
     @Override
     public void insert(Pessoa p) throws Exception {
