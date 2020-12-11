@@ -29,14 +29,7 @@ public class ManterRepublicaPresenter extends BaseInternalFramePresenter<EditarR
     
     public ManterRepublicaPresenter(JDesktopPane container, Republica republica){
         super(container, new EditarRepublicaView());
-        
-        try{
-                republica = new RepublicaService().getRepublicaUsuario(Long.valueOf(5));
-        }catch(Exception ex){
-            
-        }
-        
-        
+               
         if(republica == null){
             JOptionPane.showMessageDialog(getView(), "Usuário sem república ou informação não foi encontrada", "Editar República", JOptionPane.OK_OPTION);
         }else{

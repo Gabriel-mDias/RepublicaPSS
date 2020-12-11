@@ -23,9 +23,6 @@ public class NovaRepublicaPresenter extends ManterRepublicaState{
 
     @Override
     public void confirmarAction(Republica republica) throws Exception {
-        Pessoa p = new Pessoa();
-        p.setId(Long.valueOf(5));
-        republica.setRepresentante(p);
         this.service.insert(republica);
     }
     
