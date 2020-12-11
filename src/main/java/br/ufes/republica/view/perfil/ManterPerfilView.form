@@ -43,14 +43,6 @@
                   <Component id="txtRedeSocial" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblNome" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblTelefone" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
-                              <Component id="lblCpf" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="lblApelido" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblRedeSocial" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtTelefoneResponsavel1" alignment="0" pref="238" max="32767" attributes="0"/>
@@ -61,6 +53,17 @@
                                   <Component id="lblTelefoneResponsavel2" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtTelefoneResponsavel2" pref="237" max="32767" attributes="0"/>
                               </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblNome" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTelefone" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblApelido" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblRedeSocial" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                              <Component id="lblCpf" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
@@ -122,7 +125,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="lblNome">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nome:"/>
+        <Property name="text" type="java.lang.String" value="Nome: *"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNome">
@@ -136,7 +139,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblApelido">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Apelido:"/>
+        <Property name="text" type="java.lang.String" value="Apelido: *"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtRedeSocial">
@@ -148,7 +151,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblTelefone">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Telefone:"/>
+        <Property name="text" type="java.lang.String" value="Telefone: *"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblTelefoneResponsavel1">
@@ -203,7 +206,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblCpf">
       <Properties>
-        <Property name="text" type="java.lang.String" value="CPF:"/>
+        <Property name="text" type="java.lang.String" value="CPF: *"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="txtCpf">
@@ -270,19 +273,19 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblLogin">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Login:"/>
+            <Property name="text" type="java.lang.String" value="Login: *"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtLogin">
         </Component>
         <Component class="javax.swing.JLabel" name="lblSenha">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Senha:"/>
+            <Property name="text" type="java.lang.String" value="Senha: *"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblSenhaNovamente">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Digite a senha novamente:"/>
+            <Property name="text" type="java.lang.String" value="Digite a senha novamente: *"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="txtSenha">

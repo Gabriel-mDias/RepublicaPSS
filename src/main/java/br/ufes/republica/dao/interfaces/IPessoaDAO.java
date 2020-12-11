@@ -5,9 +5,10 @@ import java.util.List;
 
 public interface IPessoaDAO {
     
-    public void insert(Pessoa p) throws Exception;
+    public Pessoa insert(Pessoa p) throws Exception;
     public void update(Pessoa p) throws Exception;
     public void updateRepublica(Pessoa p) throws Exception;
     public Pessoa getById(Long id) throws Exception;
     public List<Pessoa> getByIdRepublica(Long idRepublica) throws Exception;
+    public void delete(Long id) throws Exception;
 }

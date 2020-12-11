@@ -62,15 +62,15 @@ public class ManterPerfilView extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Perfil");
 
-        lblNome.setText("Nome:");
+        lblNome.setText("Nome: *");
 
         btnSalvar.setText("Salvar");
 
-        lblApelido.setText("Apelido:");
+        lblApelido.setText("Apelido: *");
 
         lblRedeSocial.setText("Link da Rede Social:");
 
-        lblTelefone.setText("Telefone:");
+        lblTelefone.setText("Telefone: *");
 
         lblTelefoneResponsavel1.setText("Telefone do Responsável 1:");
 
@@ -98,7 +98,7 @@ public class ManterPerfilView extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
 
-        lblCpf.setText("CPF:");
+        lblCpf.setText("CPF: *");
 
         try {
             txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -109,11 +109,11 @@ public class ManterPerfilView extends javax.swing.JInternalFrame {
         pnUsuario.setBorder(javax.swing.BorderFactory.createTitledBorder("Usuário"));
         pnUsuario.setToolTipText("Usuário");
 
-        lblLogin.setText("Login:");
+        lblLogin.setText("Login: *");
 
-        lblSenha.setText("Senha:");
+        lblSenha.setText("Senha: *");
 
-        lblSenhaNovamente.setText("Digite a senha novamente:");
+        lblSenhaNovamente.setText("Digite a senha novamente: *");
 
         javax.swing.GroupLayout pnUsuarioLayout = new javax.swing.GroupLayout(pnUsuario);
         pnUsuario.setLayout(pnUsuarioLayout);
@@ -172,13 +172,6 @@ public class ManterPerfilView extends javax.swing.JInternalFrame {
                     .addComponent(txtRedeSocial)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNome)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblTelefone)
-                                .addGap(115, 115, 115)
-                                .addComponent(lblCpf))
-                            .addComponent(lblApelido)
-                            .addComponent(lblRedeSocial)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtTelefoneResponsavel1, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
@@ -186,7 +179,16 @@ public class ManterPerfilView extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblTelefoneResponsavel2)
-                                    .addComponent(txtTelefoneResponsavel2, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE))))
+                                    .addComponent(txtTelefoneResponsavel2, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNome)
+                                    .addComponent(lblTelefone)
+                                    .addComponent(lblApelido)
+                                    .addComponent(lblRedeSocial))
+                                .addGap(67, 67, 67)
+                                .addComponent(lblCpf)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(3, 3, 3))
                     .addComponent(pnUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())

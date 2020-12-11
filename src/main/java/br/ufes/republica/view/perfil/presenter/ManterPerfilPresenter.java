@@ -7,10 +7,12 @@ package br.ufes.republica.view.perfil.presenter;
 
 import br.ufes.republica.models.Pessoa;
 import br.ufes.republica.models.Usuario;
+import br.ufes.republica.service.UsuarioService;
 import br.ufes.republica.view.perfil.ManterPerfilView;
 import br.ufes.republica.view.perfil.presenter.state.ManterPresenterState;
 import br.ufes.republica.view.perfil.presenter.state.VisualizacaoManterPresenter;
 import br.ufes.republica.view.presenter.BaseInternalFramePresenter;
+import br.ufes.republica.view.tela_inicial.TelaInicialPresenter;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
@@ -21,20 +23,21 @@ import javax.swing.JOptionPane;
 public class ManterPerfilPresenter extends BaseInternalFramePresenter<ManterPerfilView>{
 
     private ManterPresenterState state;
-    // private PessoaService pessoaService;
+    private TelaInicialPresenter telaInicial;
+    private UsuarioService usuarioService;
     private Usuario usuario;
     private Pessoa pessoa;
 
-    public ManterPerfilPresenter(JDesktopPane container, Usuario usuario) {
+    public ManterPerfilPresenter(TelaInicialPresenter telaInicial, JDesktopPane container, Usuario usuario) {
         super(container, new ManterPerfilView());
         if (usuario == null || usuario.getId() == null) {
             throw new RuntimeException("Usuário não informada");
         }
-        this.usuario = usuario;
-        // this.usuarioService = new UsuarioService();
-
+        this.telaInicial = telaInicial;
+        this.usuarioService = new UsuarioService();
+        
         try {
-            // this.usuario = usuarioService.get(usuario);
+            this.usuario = usuarioService.getById(usuario.getId());
             this.setState(new VisualizacaoManterPresenter(this, this.usuario));
             getView().setVisible(true);
         } catch (Exception ex) {
@@ -42,11 +45,12 @@ public class ManterPerfilPresenter extends BaseInternalFramePresenter<ManterPerf
         }
     }
 
-    public ManterPerfilPresenter(JDesktopPane container, Pessoa pessoa) {
+    public ManterPerfilPresenter(TelaInicialPresenter telaInicial, JDesktopPane container, Pessoa pessoa) {
         super(container, new ManterPerfilView());
         if (pessoa == null || pessoa.getId() == null) {
             throw new RuntimeException("Usuário não informada");
         }
+        this.telaInicial = telaInicial;
         this.pessoa = pessoa;
         // this.usuarioService = new UsuarioService();
 
@@ -70,6 +74,10 @@ public class ManterPerfilPresenter extends BaseInternalFramePresenter<ManterPerf
     
     public Pessoa getPessoa() {
         return usuario.getPessoa();
+    }
+    
+    public void sair() {
+        this.telaInicial.sair();
     }
 
 }

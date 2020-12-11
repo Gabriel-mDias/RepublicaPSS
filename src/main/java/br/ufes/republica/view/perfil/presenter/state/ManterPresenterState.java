@@ -2,6 +2,8 @@ package br.ufes.republica.view.perfil.presenter.state;
 
 import br.ufes.republica.models.Pessoa;
 import br.ufes.republica.models.Usuario;
+import br.ufes.republica.service.PessoaService;
+import br.ufes.republica.service.UsuarioService;
 import br.ufes.republica.view.perfil.presenter.ManterPerfilPresenter;
 import java.util.Arrays;
 import javax.swing.JButton;
@@ -9,6 +11,8 @@ import javax.swing.JButton;
 public abstract class ManterPresenterState {
 
     protected ManterPerfilPresenter presenter;
+    protected UsuarioService usuarioService;
+    protected PessoaService pessoaService;
 
     public ManterPresenterState(ManterPerfilPresenter presenter) {
         if (presenter == null) {
@@ -19,6 +23,13 @@ public abstract class ManterPresenterState {
         removerActionListeners(view.getBtnExcluir());
         removerActionListeners(view.getBtnHistorico());
         removerActionListeners(view.getBtnSalvar());
+        this.usuarioService = new UsuarioService();
+        this.pessoaService = new PessoaService();
+    }
+
+    public void fechar() {
+        presenter.getView().setVisible(false);
+        presenter.getView().dispose();
     }
 
     public void salvar() {
@@ -41,7 +52,7 @@ public abstract class ManterPresenterState {
     protected Usuario getDados() {
         var view = presenter.getView();
         var usuario = presenter.getUsuario();
-        var pessoa = presenter.getPessoa() != null ? presenter.getPessoa() : new Pessoa();
+        var pessoa = usuario.getPessoa() != null ? usuario.getPessoa() : new Pessoa();
         pessoa.setNome(view.getTxtNome().getText());
         pessoa.setApelido(view.getTxtApelido().getText());
         pessoa.setCPF(view.getTxtCpf().getText());
@@ -50,7 +61,7 @@ public abstract class ManterPresenterState {
         pessoa.setTelefoneResponsavel1(view.getTxtTelefoneResponsavel1().getText());
         pessoa.setTelefoneResponsavel2(view.getTxtTelefoneResponsavel2().getText());
         usuario.setLogin(view.getTxtLogin().getText());
-        usuario.setSenha(Arrays.toString(view.getTxtSenha().getPassword()));
+        usuario.setSenha(new String(view.getTxtSenha().getPassword()));
         usuario.setPessoa(pessoa);
         return usuario;
     }

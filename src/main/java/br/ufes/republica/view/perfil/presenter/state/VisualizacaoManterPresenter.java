@@ -3,11 +3,21 @@ package br.ufes.republica.view.perfil.presenter.state;
 import br.ufes.republica.models.Pessoa;
 import br.ufes.republica.models.Usuario;
 import br.ufes.republica.view.perfil.presenter.ManterPerfilPresenter;
+import javax.swing.JOptionPane;
 
 public class VisualizacaoManterPresenter extends ManterPresenterState {
 
+    private Long idUsuario;
+    private Long idPessoa;
+
     public VisualizacaoManterPresenter(ManterPerfilPresenter presenter, Usuario usuario) {
         super(presenter);
+        if (usuario != null && usuario.getId() != null) {
+            idUsuario = usuario.getId();
+            if (usuario.getPessoa() != null && usuario.getPessoa().getId() != null) {
+                idPessoa = usuario.getPessoa().getId();
+            }
+        }
         init(usuario);
     }
 
@@ -61,7 +71,23 @@ public class VisualizacaoManterPresenter extends ManterPresenterState {
 
     @Override
     public void excluir() {
-        // Excluir
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja excluir?", "", JOptionPane.YES_NO_OPTION);
+        if (opcao == 0) {
+            try {
+                if (idUsuario != null) {
+                    usuarioService.delete(idUsuario);
+                    if (idPessoa != null) {
+                        pessoaService.delete(idPessoa);
+                    }
+                    JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso, saindo da aplicação!", "", JOptionPane.OK_OPTION);
+                    presenter.getView().setVisible(false);
+                    presenter.getView().dispose();
+                    presenter.sair();
+                }
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
     }
 
     @Override
@@ -73,5 +99,4 @@ public class VisualizacaoManterPresenter extends ManterPresenterState {
     public void historico() {
         // exibir tela de historico
     }
-
 }

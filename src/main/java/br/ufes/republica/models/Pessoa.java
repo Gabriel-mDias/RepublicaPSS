@@ -18,8 +18,10 @@ public class Pessoa {
     private List<Rateio> rateios;
     private Republica republicaAtual;
     private IEstadoPessoa estado;
+    private boolean excluido;
 
     public Pessoa() {
+        this.excluido = false;
     }
     
     public Pessoa(Long id, String nome, String apelido, String telefone, String CPF, String linkRedeSocial, String telefoneResponsavel1, String telefoneResponsavel2, List<HistoricoRepublica> historicoRepublicas, IEstadoPessoa estado) {
@@ -34,6 +36,7 @@ public class Pessoa {
         this.historicoRepublicas = historicoRepublicas;
         this.estado = estado;
         this.rateios = new ArrayList<>();
+        this.excluido = false;
     }
 
     public Long getId() {
