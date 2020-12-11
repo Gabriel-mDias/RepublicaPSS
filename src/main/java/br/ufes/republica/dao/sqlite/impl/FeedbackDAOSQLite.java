@@ -146,7 +146,7 @@ public class FeedbackDAOSQLite implements IFeedbackDAO {
         } catch (Exception ex) {
             this.manager.desfazTransacao();
             this.manager.close();
-            throw new Exception("Erro ao inserir");
+            throw new Exception("Erro ao buscar");
         }
     }
 
