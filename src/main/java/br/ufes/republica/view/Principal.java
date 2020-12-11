@@ -1,6 +1,6 @@
 package br.ufes.republica.view;
 
-import br.ufes.republica.service.UsuarioService;
+import br.ufes.republica.view.login.LoginPresenter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -13,14 +13,7 @@ public class Principal {
         Properties prop = app.loadPropertiesFile("config.properties");
         System.setProperty("db.name", prop.getProperty("db.name"));
         
-//        new LoginPresenter();
-
-        var service = new UsuarioService();
-        try {
-            var usuario = service.getByLogin("teste");
-            System.out.println(usuario.getSenha());
-        } catch(Exception e) {
-        }
+        new LoginPresenter();
         
     }
 

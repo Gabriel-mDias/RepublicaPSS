@@ -54,7 +54,8 @@ public class TelaInicialView extends javax.swing.JFrame {
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        mnSair = new javax.swing.JMenu();
+        itemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -177,8 +178,17 @@ public class TelaInicialView extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setText("Sair");
-        jMenuBar1.add(jMenu5);
+        mnSair.setText("Sair");
+        mnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnSairActionPerformed(evt);
+            }
+        });
+
+        itemSair.setText("Sair");
+        mnSair.add(itemSair);
+
+        jMenuBar1.add(mnSair);
 
         setJMenuBar(jMenuBar1);
 
@@ -240,6 +250,10 @@ public class TelaInicialView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
+    private void mnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSairActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnSairActionPerformed
+
     public JDesktopPane getDesktop() {
         return Desktop;
     }
@@ -275,6 +289,14 @@ public class TelaInicialView extends javax.swing.JFrame {
     public static void setDesktop(JDesktopPane Desktop) {
         TelaInicialView.Desktop = Desktop;
     }
+
+    public JMenu getMnSair() {
+        return mnSair;
+    }
+
+    public JMenuItem getItemSair() {
+        return itemSair;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane Desktop;
@@ -283,10 +305,10 @@ public class TelaInicialView extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemManterPerfil;
     private javax.swing.JMenuItem itemManterReclamacao;
     private javax.swing.JMenuItem itemManterRepublica;
+    private javax.swing.JMenuItem itemSair;
     private javax.swing.JMenuItem itemTarefa;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem13;
@@ -300,5 +322,6 @@ public class TelaInicialView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenu menuMorador;
     private javax.swing.JMenu menuRepublica;
+    private javax.swing.JMenu mnSair;
     // End of variables declaration//GEN-END:variables
 }
