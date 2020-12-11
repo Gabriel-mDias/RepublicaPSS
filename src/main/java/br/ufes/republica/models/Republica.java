@@ -42,6 +42,10 @@ public class Republica {
         }
         
     }
+
+    public Republica() {
+    }
+    
     
     public void alterarRepresentante(Pessoa representante){
         if(!this.historicoRepresentantes.isEmpty()){
